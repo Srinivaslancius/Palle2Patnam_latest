@@ -9,7 +9,7 @@ if($setcon == 1) {
 	$password = "lancius@12#";
 	$dbname = "palle2patnam";
 } else {
-	$servername = "192.168.0.102";	
+	$servername = "192.168.0.104";	
 	$username = "root";
 	$password = "root";
 	$dbname = "palle2patnam_latest_new";
