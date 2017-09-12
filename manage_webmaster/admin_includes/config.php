@@ -1,6 +1,6 @@
 <?php
 session_start();
-date_default_timezone_set("Asia/Kolkata");
+date_default_timezone_set("Asia/Kolkata"); 
 
 $setcon = 2;
 if($setcon == 1) {
