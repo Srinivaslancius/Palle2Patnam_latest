@@ -7,7 +7,7 @@ $id = $_GET['id'];
     //Save data into database
     $vendor_id = $_POST['vendor_id'];
     $milk_in_ltrs  = $_POST['milk_in_ltrs'];
-    $created_date = date("Y-m-d");
+    $created_date = $_POST['created_date'];
         $sql = "UPDATE vendor_milk_assign SET vendor_id = '$vendor_id',milk_in_ltrs = '$milk_in_ltrs',created_date = '$created_date' WHERE id='$id'";
         if($conn->query($sql) === TRUE) {
            echo "<script type='text/javascript'>window.location='milk_vendors.php?msg=success'</script>";
@@ -46,7 +46,11 @@ $id = $_GET['id'];
                     <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." value="<?php echo $getMilkVendors1['milk_in_ltrs'];?>"  required onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
-
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Created Date</label>
+                    <input type="text" class="form-control" id="created_date" name="created_date" placeholder="Created Date" data-error="Please enter Created Date." required value="<?php echo $getMilkVendors1['created_date'];?>">
+                    <div class="help-block with-errors"></div>
+                  </div>
 
                   <button type="submit" name="submit" value="Submit"  class="btn btn-primary btn-block">Submit</button>
                 </form>
