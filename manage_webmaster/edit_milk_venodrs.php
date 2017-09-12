@@ -5,9 +5,11 @@ $id = $_GET['id'];
         echo "";
     } else  {
     //Save data into database
+    
     $vendor_id = $_POST['vendor_id'];
     $milk_in_ltrs  = $_POST['milk_in_ltrs'];
-    $created_date = $_POST['created_date'];
+    $date = date_create($_POST['created_date']);
+    $created_date = date_format($date,"Y-m-d");
         $sql = "UPDATE vendor_milk_assign SET vendor_id = '$vendor_id',milk_in_ltrs = '$milk_in_ltrs',created_date = '$created_date' WHERE id='$id'";
         if($conn->query($sql) === TRUE) {
            echo "<script type='text/javascript'>window.location='milk_vendors.php?msg=success'</script>";
