@@ -16,6 +16,7 @@
                     <th>Total Ltrs</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,7 @@
                     <td><?php echo $row['total_ltr'];?></td>
                     <td><?php echo $row['start_date'];?></td>
                     <td><?php echo $row['end_date'];?></td>
+                    <td> <a href="edit_milk_order.php?id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a></td>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
