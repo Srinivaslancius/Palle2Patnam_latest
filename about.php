@@ -1,4 +1,12 @@
     <?php include_once 'header.php'; ?>
+    <?php 
+        $getContentData = getDataFromTables('content_pages',$status=NULL,'id','11',$activeStatus=NULL,$activeTop=NULL);
+        $getContentData1 = $getContentData->fetch_assoc();
+    ?>
+    <?php 
+        $getContentData2 = getDataFromTables('content_pages',$status=NULL,'id','10',$activeStatus=NULL,$activeTop=NULL);
+        $getContentData3 = $getContentData2->fetch_assoc();
+    ?>
         <div class="welcome_area">
             <div class="welcome_slider">
                 <div class="single_welcome_slider" style="background-image:url(img/welcome_bg.jpg)">
@@ -47,13 +55,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="section_tittle">
-					   <center><h1 style="margin-bottom:20px">Idea</h1></center>
+					   <center><h1 style="margin-bottom:20px"><?php echo $getContentData1['title']; ?></h1></center>
                         <div class="section_tittle_content">
-                           <span style="text-aline:justify; line-height:21px">Palle 2 Patnam is the first online shopping and delivery to 
-                            houses service in KSA. We are working cover all the Kingdom. Expanding coverage areas require 
-                            more time and effort to ensure the highest quality level of provided service. You can browse all
-							supported locations and add your mobile number to be notified every time we expand
-							into new areas.</span>
+                           <span style="text-aline:justify; line-height:21px"><?php echo $getContentData1['description']; ?></span>
                         </div>
                     </div>
                 </div>
@@ -71,13 +75,9 @@
                 </div>
 				 <div class="col-md-6">
                     <div class="section_tittle">
-					   <center><h1 style="margin-bottom:20px">Experience</h1></center>
+					   <center><h1 style="margin-bottom:20px"><?php echo $getContentData3['title']; ?></h1></center>
                         <div class="section_tittle_content">
-                            <span style="text-aline:justify; line-height:21px">Palle 2 Patnam is the first online shopping and delivery
-                            to houses service in KSA. We are working cover all the Kingdom. Expanding coverage areas require 
-                            more time and effort to ensure the highest quality level of provided service. You can browse all
-							supported locations and add your mobile number to be notified every time we expand
-							into new areas.</span>
+                            <span style="text-aline:justify; line-height:21px"><?php echo $getContentData3['description']; ?></span>
                         </div>
                     </div> 
                 </div>
