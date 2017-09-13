@@ -51,8 +51,8 @@ if (!isset($_POST['submit']))  {
           </div>
           <div class="panel-body">
             <div class="row">
-              <?php $getCategories = getDataFromTables('categories',0,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>
-              <?php $getWeights = getDataFromTables('product_weights',0,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>
+              <?php $getCategories = getDataFromTables('categories','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>
+              <?php $getWeights = getDataFromTables('product_weights','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
 
