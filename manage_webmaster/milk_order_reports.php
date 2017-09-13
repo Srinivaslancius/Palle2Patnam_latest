@@ -58,17 +58,16 @@
                                           <div>Ltrs</div>                                                        
                                       </div>   
                                       <div>
-                                      <?php while($val2=  $result2->fetch_assoc()) { 
-                                            $total += $val2['extra_ltr'];
-                                       ?>
+                                      <?php while($val2=  $result2->fetch_assoc()) { ?>
+                                            <!-- $total += $val2['extra_ltr']; -->
+                                      
                                           <div><?php echo $val2['order_date']; ?></div>
-                                          <div><?php echo $val2['extra_ltr']; ?></div>                       
+                                          <div><?php $extra_ltr = $val2['extra_ltr'];echo $extra_ltr; ?></div>                       
                                       <?php } ?>
                                       </div>
                                   </div>
                                   <div class="clear_fix"></div>
                                   <p style="font-weight:bold; text-align:center"> Cancelled Ltrs in this Month  </p>
-
                                   <div class="mytable">
                                       <div>
                                           <div>Cancelled Date</div>
@@ -77,21 +76,19 @@
                                       <div>
                                       <?php while($val3=  $result3->fetch_assoc()) { ?>
                                           <div><?php echo $val3['cancel_date']; ?></div> 
-                                          <div><?php echo $val3['cancel_ltr']; ?></div>                   
+                                          <div><?php $cancel_ltr = $val3['cancel_ltr']; echo $cancel_ltr; ?></div>                   
                                       <?php } ?>
                                       </div>
                                   </div>
-
                                   <p style="font-weight:bold; text-align:center"> Total Ltrs in this Month  </p>
-                                  <?php echo $total += $val2['extra_ltr']+$row['total_ltr']; ?>
-
+                                  <?php echo $total = $row['total_ltr'] + $extra_ltr - $cancel_ltr; ?>
                                   <div class="modal-footer" >
-                                        <button type="button" class="btn" data-dismiss="modal" style="background-color:#f00; color:#fff">Close</button>
+                                    <button type="button" class="btn" data-dismiss="modal" style="background-color:#f00; color:#fff">Close</button>
                                   </div>
+                              </div>
                           </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
                   </tr>
                   <?php  $i++; } ?>
                 </tbody>
