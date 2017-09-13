@@ -25,7 +25,7 @@
                     <td><?php echo $row['category_name'];?></td>
                     <td><img src="<?php echo $base_url . 'uploads/category_images/'.$row['category_image'] ?>" height="100" width="100"/></td>
                     <td><?php if ($row['status']==0) { echo "<span class='label label-outline-success check_active open_cursor' data-incId=".$row['id']." data-status=".$row['status']." data-tbname='categories'>Active</span>" ;} else { echo "<span class='label label-outline-info check_active open_cursor' data-status=".$row['status']." data-incId=".$row['id']." data-tbname='categories'>In Active</span>" ;} ?></td>
-                    <td> <a href="edit_categories.php?bid=<?php echo $row['id']; ?>"> <i class="zmdi zmdi-edit"></i> &nbsp; </a> </td>
+                    <td> <a href="edit_categories.php?bid=<?php echo $row['id']; ?>"> <i class="zmdi zmdi-edit"></i></a> </td>
                   </tr>
                   <?php  $i++; } ?>                  
                 </tbody>               

@@ -3,7 +3,7 @@
      <div class="site-content">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
-            <a href="add_milk_order.php" style="float:right">Add Milk Order</a>
+            <!-- <a href="add_milk_order_reports.php" style="float:right">Add Milk Order Reports</a> -->
             <h3 class="m-t-0 m-b-5">Milk Orders</h3>
           </div>
           <div class="panel-body">
