@@ -1,3 +1,8 @@
+<?php 
+ob_start();
+include_once('manage_webmaster/admin_includes/config.php');
+include_once('manage_webmaster/admin_includes/common_functions.php');
+?>
 <!DOCTYPE html>
 <html>
 
