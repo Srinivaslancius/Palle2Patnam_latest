@@ -29,8 +29,8 @@ $id = $_GET['id'];
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
 
-                  <?php $getVendors = getDataFromTables('vendors',0,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);
-                  $getMilkVendors = getDataFromTables('vendor_milk_assign',0,$id,'id',$activeStatus=NULL,$activeTop=NULL); $getMilkVendors1 = $getMilkVendors->fetch_assoc(); 
+                  <?php $getVendors = getAllDataCheckActiveRecords('vendors',0);
+                  $getMilkVendors = getDataFromTables('vendor_milk_assign',$status=NULL,'id',$id,$activeStatus=NULL,$activeTop=NULL); $getMilkVendors1 = $getMilkVendors->fetch_assoc(); 
                   ?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Vendor</label>

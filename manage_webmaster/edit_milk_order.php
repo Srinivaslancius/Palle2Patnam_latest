@@ -33,11 +33,11 @@ $id = $_GET['id'];
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <form data-toggle="validator" method="post" enctype="multipart/form-data">
 
-                  <?php $getUserData = getDataFromTables('users',0,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);
-                  $getMilkOrderUsers = getDataFromTables('milk_orders',$status=NULL,$id,'id',$activeStatus=NULL,$activeTop=NULL); $getMilkOrderUsers1 = $getMilkOrderUsers->fetch_assoc();
+                  <?php $getUserData = getAllDataCheckActiveRecords('users',0);
+                  $getMilkOrderUsers = getDataFromTables('milk_orders',$status=NULL,'id',$id,$activeStatus=NULL,$activeTop=NULL); $getMilkOrderUsers1 = $getMilkOrderUsers->fetch_assoc();
 
-                  $getProductsData = getDataFromTables('products',$status=NULL,$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);
-                  $getMilkOrderProducts = getDataFromTables('milk_orders',$status=NULL,$id,'id',$activeStatus=NULL,$activeTop=NULL); $getMilkOrderProducts1 = $getMilkOrderProducts->fetch_assoc(); 
+                  $getProductsData = getAllDataCheckActiveRecords('products',0);
+                  $getMilkOrderProducts = getDataFromTables('milk_orders',$status=NULL,'id',$id,$activeStatus=NULL,$activeTop=NULL); $getMilkOrderProducts1 = $getMilkOrderProducts->fetch_assoc(); 
                   ?>
                   <?php $getTotalLtrsData = getDataFromTables('milk_orders',$status=NULL,'id',$id,$activeStatus=NULL,$activeTop=NULL);
                   $getTotalLtrsData1 = $getTotalLtrsData->fetch_assoc();

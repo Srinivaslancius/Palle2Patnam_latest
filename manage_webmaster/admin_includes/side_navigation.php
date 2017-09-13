@@ -104,6 +104,18 @@
                 <li class="<?php if($page_name == 'cancel_milk_orders.php' || $page_name == 'add_cancel_milk_order.php') { echo "active"; } ?>"><a href="cancel_milk_orders.php">Cancel Milk Orders</a></li>
               </ul>
             </li>
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Milk Order Reports</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Milk Reports</li>
+                <li class="<?php if($page_name == 'milk_order_reports.php' || $page_name == 'monthly_milk_orders.php' || $page_name == 'yearly_milk_orders.php') { echo "active"; } ?>"><a href="milk_order_reports.php">Milk Orders</a></li> 
+              </ul>
+            </li>
             <!-- <li  class="<?php if($page_name == 'orders.php') { echo "active"; } ?>">
               <a href="orders.php" aria-haspopup="true">
                 <span class="menu-icon">
