@@ -4,15 +4,15 @@
                 <div class="row wow fadeInUp">
                     <div class="col-sm-8">
                         <div class="footer_content">
-                            <p>Copyright © 2017 XXXXX. All rights reserved.</p>
+                            <p><?php echo $getSiteSettingsData1['footer_text']; ?></p>
 							<a href="#">Privacy-Terms</a>
                         </div>
                     </div>
 					<div class="col-sm-4 margin_left">
                         <div class="footer_content">
-							<p style="padding-right:15px">Connect With US:<a href="#" class="faa fa fa-facebook"></a>
-							<a href="#" class="faa fa fa-twitter"></a>
-							<a href="#" class="faa fa fa-google"></a></p>
+							<p style="padding-right:15px">Connect With US:<a href="<?php echo $getSiteSettingsData1['fb_link']; ?>"  target="_blank" class="faa fa fa-facebook"></a>
+							<a href="<?php echo $getSiteSettingsData1['twitter_link']; ?>"  target="_blank" class="faa fa fa-twitter"></a>
+							<a href="<?php echo $getSiteSettingsData1['gplus_link']; ?>"  target="_blank" class="faa fa fa-google"></a></p>
 						</div>
 					</div>
 				</div>

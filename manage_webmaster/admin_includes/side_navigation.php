@@ -59,14 +59,14 @@
                 <span class="menu-text">Banners</span>
               </a>
             </li>
-            <!-- <li  class="<?php if($page_name == 'content_pages.php' || $page_name == 'add_content_pages.php' || $page_name == 'edit_content_pages.php') { echo "active"; } ?>">
+            <li  class="<?php if($page_name == 'content_pages.php' || $page_name == 'add_content_pages.php' || $page_name == 'edit_content_pages.php') { echo "active"; } ?>">
               <a href="content_pages.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-collection-item  zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Content Pages</span>
               </a>
-            </li> -->
+            </li>
             <li  class="<?php if($page_name == 'categories.php' || $page_name == 'add_categories.php' || $page_name == 'edit_categories.php') { echo "active"; } ?>">
               <a href="categories.php" aria-haspopup="true">
                 <span class="menu-icon">
