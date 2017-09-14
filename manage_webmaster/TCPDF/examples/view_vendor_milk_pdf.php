@@ -61,8 +61,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
+    require_once(dirname(__FILE__).'/lang/eng.php');
+    $pdf->setLanguageArray($l);
 }
 
 $price = 0;
@@ -95,12 +95,12 @@ $pdf->SetFont('helvetica', 'B', 8);
 // -----------------------------------------------------------------------------
 
    $tbl = '<table cellspacing="0" cellpadding="2" border="1">
-    <tr style="background-color:#FFFF00;color:#0000FF;">
+    <tr style="background-color:green;color:white;">
         <td align="center"><strong>Package Name</strong></td>
         <td align="center"><strong>Total Ltrs</strong></td>    
     </tr>';
     
-    $tbl .='<tr style="background-color:#e0e0e0;"><td align="center">Monthly -  Milk </td><td align="center"> '.$row['total_milk_vendor_ltrs'].' </td></tr>';
+    $tbl .='<tr style="background-color:white;"><td align="center">Monthly -  Milk </td><td align="center"> '.$row['total_milk_vendor_ltrs'].' </td></tr>';
     $tbl .= '</table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
