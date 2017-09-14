@@ -66,8 +66,8 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 }
 
 $price = 0;
-include_once('../../includes/config.php');
-include_once('../../includes/functions.php');
+include_once('../../admin_includes/config.php');
+include_once('../../admin_includes/common_functions.php');
 $uid = $_GET['uid'];
 
 $sql = "select *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs from `vendor_milk_assign` WHERE vendor_id = '$uid' ";

@@ -67,8 +67,8 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 
 
 $price = 0;
-include_once('../../includes/config.php');
-include_once('../../includes/functions.php');
+include_once('../../admin_includes/config.php');
+include_once('../../admin_includes/common_functions.php');
 $uid = $_GET['uid'];
 
 $sql = "SELECT milk_orders.id,milk_orders.total_ltr as total_ltrs,milk_orders.user_id, extra_milk_orders.extra_ltr, extra_milk_orders.order_date, milk_orders.start_date, milk_orders.end_date,users.user_name,users.id FROM milk_orders LEFT JOIN extra_milk_orders ON milk_orders.user_id=extra_milk_orders.user_id LEFT JOIN users ON users.id=milk_orders.user_id WHERE milk_orders.user_id = $uid AND DATE_FORMAT(order_date,'%Y-%m-%d') between milk_orders.start_date AND milk_orders.end_date ";

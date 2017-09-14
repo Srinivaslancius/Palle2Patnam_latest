@@ -23,7 +23,14 @@
         $result = $conn->query($sql);
         return $result;
     }
-
+    function getIndividualDetails($id,$table,$clause)
+    {
+        global $conn;
+        $sql="select * from `$table` where `$clause` = '$id' ";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();        
+        return $row;
+    }
     /*Common function with where out where get all data from query */
     function getAllData($table)
     {

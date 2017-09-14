@@ -27,7 +27,7 @@
 $price = 0;
 
 // Include the main TCPDF library (search for installation path).
-include_once('../../includes/config.php');
+include_once('../../admin_includes/config.php');
 require_once('tcpdf_include.php');
 
 // extend TCPF with custom functions

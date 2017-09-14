@@ -28,9 +28,9 @@ $price = 0;
 // Create connection
 
 // Include the main TCPDF library (search for installation path).
-include_once('../../includes/config.php');
+include_once('../../admin_includes/config.php');
 require_once('tcpdf_include.php');
-include_once('../../includes/functions.php');
+include_once('../../admin_includes/common_functions.php');
 
 // extend TCPF with custom functions
 class MYPDF extends TCPDF {
