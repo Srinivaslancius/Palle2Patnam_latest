@@ -99,6 +99,9 @@
                 <span class="menu-text">Milk Orders</span>
               </a>
               <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Reports</li>
+                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Reports</a></li> 
+                <li class="menu-subtitle">Milk Reports</li>
                 <li class="menu-subtitle">Milk Orders</li>
                 <li class="<?php if($page_name == 'milk_orders.php' || $page_name == 'add_milk_order.php') { echo "active"; } ?>"><a href="milk_orders.php">Milk Orders</a></li> 
                 <li class="<?php if($page_name == 'extra_milk_orders.php' || $page_name == 'add_extra_milk_order.php') { echo "active"; } ?>"><a href="extra_milk_orders.php">Extra Milk Orders</a></li>
@@ -113,8 +116,9 @@
                 <span class="menu-text">Milk Order Reports</span>
               </a>
               <ul class="sidebar-submenu collapse">
+                
+                <li class="<?php if($page_name == 'milk_order_reports.php' || $page_name == 'monthly_milk_orders.php' || $page_name == 'yearly_milk_orders.php') { echo "active"; } ?>"><a href="milk_order_reports.php">Milk Reports</a></li>
                 <li class="menu-subtitle">Milk Reports</li>
-                <li class="<?php if($page_name == 'milk_order_reports.php' || $page_name == 'monthly_milk_orders.php' || $page_name == 'yearly_milk_orders.php') { echo "active"; } ?>"><a href="milk_order_reports.php">Milk Reports</a></li> 
               </ul>
             </li> -->
             <!-- <li  class="<?php if($page_name == 'orders.php') { echo "active"; } ?>">
