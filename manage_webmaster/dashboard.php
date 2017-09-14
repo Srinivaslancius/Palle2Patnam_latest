@@ -1,10 +1,11 @@
 <?php include_once 'admin_includes/main_header.php'; ?>
       <div class="site-content">
         <div class="row">
+          <a href="users.php">
           <div class="col-md-4 col-sm-5">
             <div class="widget widget-tile-2 bg-primary m-b-30">
               <div class="wt-content p-a-20 p-b-50">
-                <div class="wt-title"><a href="users.php" style="color: white;text-decoration: none !important;">Users</a>
+                <div class="wt-title">Users
                   <span class="t-caret text-success">
                     <i class="zmdi zmdi-caret-up"></i>
                   </span>
@@ -16,10 +17,12 @@
               </div>
             </div>
           </div>
+          </a>
+          <a href="admin_users.php" style="color: white;text-decoration: none !important;">
           <div class="col-md-4 col-sm-5">
             <div class="widget widget-tile-2 bg-warning m-b-30">
               <div class="wt-content p-a-20 p-b-50">
-                <div class="wt-title"><a href="admin_users.php" style="color: white;text-decoration: none !important;">Admin Users</a></div>
+                <div class="wt-title">Admin Users</div>
                 <div class="wt-number"><?php echo getRowsCount('admin_users')?></div>
               </div>
               <div class="wt-icon">
@@ -27,10 +30,12 @@
               </div>
             </div>
           </div>
+          </a>
+          <a href="orders.php">
           <div class="col-md-4 col-sm-4">
             <div class="widget widget-tile-2 bg-danger m-b-30">
               <div class="wt-content p-a-20 p-b-50">
-                <div class="wt-title"><a href="orders.php" style="color: white;text-decoration: none !important;">Orders</a></div>
+                <div class="wt-title">Orders</div>
                 <div class="wt-number"><?php echo getRowsCount('orders')?></div>
               </div>
               <div class="wt-icon">
@@ -38,10 +43,12 @@
               </div>
             </div>
           </div>
+          </a>
+          <a href="products.php">
           <div class="col-md-4 col-sm-4">
             <div class="widget widget-tile-2 bg-danger m-b-30">
               <div class="wt-content p-a-20 p-b-50">
-                <div class="wt-title"><a href="products.php" style="color: white;text-decoration: none !important;">Products</a></div>
+                <div class="wt-title">Products</div>
                 <div class="wt-number"><?php echo getRowsCount('products')?></div>
               </div>
               <div class="wt-icon">
@@ -49,6 +56,7 @@
               </div>
             </div>
           </div>
+          </a>
         </div>
 
         <div class="col-md-6 m-b-30">
