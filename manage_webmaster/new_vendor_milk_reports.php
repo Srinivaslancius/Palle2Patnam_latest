@@ -140,21 +140,21 @@ h3{
   
   <div class="col-sm-3">
     <select class="form-control" id="select-users" name="vendor_id">
-      <option value=" ">Select vendar</option>
+      <option value="">Select Vendor</option>
       <?php while ($getAllUsers = $result->fetch_assoc()) { ?>
       <option <?php if(isset($_REQUEST['vendor_id']) && $_REQUEST['vendor_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['vendor_name']; ?></option>
           <?php } ?>
     </select>     
   </div>      
   <div class="col-sm-3">
-    <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date" required value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
+    <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date"  value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
   </div>
   <div class="col-sm-3">
-    <input class="form-control" type="text" id="end_date" name="end_date" placeholder="End Date" required value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
+    <input class="form-control" type="text" id="end_date" name="end_date" placeholder="End Date"  value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
   </div>
   <div class="col-sm-3">
-    <inpu class="btn btn-primary" type="submit" name="search" value="Search">
-    <input class="btn btn-primary" type="reset" name="reset" value="Search">
+    <input class="btn btn-primary" type="submit" name="search" value="Search">
+    <input class="btn btn-primary" type="submit" name="reset" value="Reset" id="reset">
   </div>
   
 </div>
