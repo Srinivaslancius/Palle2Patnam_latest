@@ -56,20 +56,11 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#start_date,#end_date" ).datepicker();
-  } );
-  </script>
-
 <style>
 table {
     width: 53%;
-  border: 2px solid gray;
-  border-collapse:collapse;
+	border: 2px solid gray;
+	border-collapse:collapse;
 }
 
 td {
@@ -86,41 +77,38 @@ th {
     padding: 8px;
 }
 .one{
-  margin-top:20px;
-  border-bottom:2px solid #DCDCDC;
-  padding-top:2px;
-  padding-bottom:10px;
-  }
+	margin-top:20px;
+	border-bottom:2px solid #DCDCDC;
+	padding-top:2px;
+	padding-bottom:10px;
+	}
 .two{
-  margin-top:20px;
-  
+	margin-top:20px;
+	
 }
 .header{
-  background-color:#DCDCDC;
-  border-bottom:2px solid #D3D3D3 ;
-  }
+	background-color:#DCDCDC;
+	border-bottom:2px solid #D3D3D3	;
+	}
 .footer{
-  margin-top:20px;
-  background-color:#DCDCDC;
-  padding:15px;
-  border-bottom:2px solid #D3D3D3;
-  border-top:2px solid #D3D3D3;
-  }
+	margin-top:20px;
+	background-color:#DCDCDC;
+	padding:15px;
+	border-bottom:2px solid #D3D3D3;
+	border-top:2px solid #D3D3D3;
+	}
 h3{
-  color:#faab19;
-  }
-  .btn-default{
-  padding-left:30px; 
-  padding-right:30px
-  }
-  a{
-  color:black;}
+	color:#faab19;
+	}
+	.btn-default{
+	padding-left:30px; 
+	padding-right:30px
+	}
+	a{
+	color:black;}
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT vendors.id,vendors.vendor_name FROM vendors LEFT JOIN vendor_milk_assign ON vendor_milk_assign.vendor_id=vendors.id GROUP BY vendor_milk_assign.vendor_id";
-      $result = $conn->query($sql);
-?>
 <div class="container-fluid header">
   <div class="row">
     <div class="col-sm-5">
@@ -135,9 +123,8 @@ h3{
 </div>
 <div class="container-fluid one">
 <div class="form-group">
-<form name="search" method="post" autocomplete="off">
 <div class="row">
-  
+  <form name="search" method="post" autocomplete="off">
   <div class="col-sm-3">
     <select class="form-control" id="select-users" name="vendor_id">
       <option value=" ">Select vendar</option>
@@ -150,16 +137,15 @@ h3{
     <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date" required value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
   </div>
   <div class="col-sm-3">
-    <input class="form-control" type="text" id="end_date" name="end_date" placeholder="End Date" required value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
+    <input class="form-control"type="text" id="end_date" name="end_date" placeholder="End Date" required value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
   </div>
   <div class="col-sm-3">
-    <inpu class="btn btn-primary" type="submit" name="search" value="Search">
-    <input class="btn btn-primary" type="reset" name="reset" value="Search">
+    <input type="submit" name="search" value="Search" class="btn btn-default" >
+    <input type="submit" name="reset" value="Reset" id="reset" class="btn btn-default">
   </div>
-  
-</div>
-</div>
 </form>
+</div>
+</div>
 </div>
 </div>
 <div class="container-fluid two">
@@ -169,7 +155,7 @@ h3{
     <th>Vendor Name</th>
     <th>Total Ltrs</th>
     <th>Print</th>
-  </tr>
+	</tr>
   <?php   
         $i=1; 
         $vendor_id = array(); 
