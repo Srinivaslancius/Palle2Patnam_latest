@@ -47,6 +47,7 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
     $getData = $conn->query($sql);
 }
 ?>
+  
 <html lang="en">
 <head>
   <title>New vendor Milk Reports</title>
@@ -55,16 +56,10 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#start_date,#end_date" ).datepicker();
-  } );
-  </script>
-
 <style>
 table {
     width: 53%;
@@ -192,3 +187,8 @@ h3{
 </div>
 </body>
 </html>
+<script>
+  $( function() {
+    $( "#end_date , #start_date" ).datepicker();
+  } );
+</script>
