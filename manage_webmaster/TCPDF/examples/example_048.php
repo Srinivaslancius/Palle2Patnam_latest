@@ -93,7 +93,7 @@ $TotalLtrs = $gettotal[0];
 $priceinLtr = $gettotal[1];
 
 $getUserNameName = getIndividualDetails($uid,'users','id'); 
-$getGetDate = getIndividualDetails($uid,'milk_orders','id'); 
+$getGetDate = getIndividualDetails($uid,'milk_orders','user_id'); 
 
 // ---------------------------------------------------------
 
