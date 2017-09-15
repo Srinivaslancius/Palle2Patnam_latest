@@ -97,7 +97,7 @@ body {
         font-size: 32px;
         margin-bottom: 5px; } }
 
-a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
   animation-delay: 1.6s;
   background: #008000 none repeat scroll 0 0;
   color: #fff;
@@ -111,7 +111,7 @@ a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content 
   overflow: hidden;
   position: relative;
   z-index: 1; }
-  a.custom_btn:after, a.blog_btn:after, .welcome_area .single_welcome_slider .welcome_content a:after, .booking_area form.booking_form a:after, .blog2_area .single_blog .blog_content a.blog_btn:after {
+  .custom_btn:after, a.blog_btn:after, .welcome_area .single_welcome_slider .welcome_content a:after, .booking_area form.booking_form a:after, .blog2_area .single_blog .blog_content a.blog_btn:after {
     position: absolute;
     width: 158%;
     left: 125px;
@@ -123,20 +123,20 @@ a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content 
     z-index: -1;
     transform: rotate(-50deg);
     transition: 0.4s linear; }
-  a.custom_btn:hover:after, a.blog_btn:hover:after, .welcome_area .single_welcome_slider .welcome_content a:hover:after, .booking_area form.booking_form a:hover:after, .blog2_area .single_blog .blog_content a.blog_btn:hover:after {
+  .custom_btn:hover:after, a.blog_btn:hover:after, .welcome_area .single_welcome_slider .welcome_content a:hover:after, .booking_area form.booking_form a:hover:after, .blog2_area .single_blog .blog_content a.blog_btn:hover:after {
     visibility: visible;
     opacity: .1;
     height: 474%;
     left: -90px;
     top: -83px; }
   @media only screen and (min-width: 0px) and (max-width: 767px) {
-    a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+    .custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
       font-size: 13px;
       margin-top: 15px;
       padding: 10px 0;
       width: 130px; } }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
-    a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+    .custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
       width: 150px;
       padding: 10px 0;
       font-size: 14px; } }

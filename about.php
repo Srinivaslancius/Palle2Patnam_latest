@@ -42,44 +42,38 @@
     <!--Hero area end-->
 
     <!--Combo_offer area start-->
+    <?php $getAboutData = getDataFromTables("content_pages",$status=NULL,"id",'1',$activeStatus=NULL,$activeTop=NULL); $getAbout = $getAboutData->fetch_assoc();?>
     <div class="about_us">
         <div class="container" style="padding-top:70px;padding-left:60px; padding-right:60px">
             <div class="row">
                 <div class="col-md-6">
                     <div class="section_tittle">
-					   <center><h1 style="margin-bottom:20px">Idea</h1></center>
+                       <center><h1 style="margin-bottom:20px"><?php echo $getAbout['title']; ?></h1></center>
                         <div class="section_tittle_content">
-                           <span style="text-align:justify; line-height:21px">Palle 2 Patnam is the first online shopping and delivery to 
-                            houses service in KSA. We are working cover all the Kingdom. Expanding coverage areas require 
-                            more time and effort to ensure the highest quality level of provided service. You can browse all
-							supported locations and add your mobile number to be notified every time we expand
-							into new areas.</span>
+                           <span style="text-align:justify; line-height:21px"><?php echo $getAbout['description']; ?></span>
                         </div>
                     </div>
                 </div>
-				 <div class="col-md-6">
+                 <div class="col-md-6">
                     <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><img src="img/green-idea.png" alt="ptop" class="img-responsive"></center>
+                        <center><img src="<?php echo $base_url . 'uploads/content_images/'.$getAbout['image'] ?>" alt="ptop" class="img-responsive"></center>
                     </div>
                 </div>
             </div>
-            <div class="row" style="margin-top:20px">
+            <?php $getAboutData = getDataFromTables("content_pages",$status=NULL,"id",'2',$activeStatus=NULL,$activeTop=NULL); $getAbout = $getAboutData->fetch_assoc();?>
+            <div class="row">
                 <div class="col-md-6">
-				<div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><img src="img/service1.png" alt="ptop" class="img-responsive"></center>
+                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
+                        <center><img src="<?php echo $base_url . 'uploads/content_images/'.$getAbout['image'] ?>" alt="ptop" class="img-responsive"></center>
                     </div>
                 </div>
-				 <div class="col-md-6">
+                <div class="col-md-6">
                     <div class="section_tittle">
-					   <center><h1 style="margin-bottom:20px">Experience</h1></center>
+                       <center><h1 style="margin-bottom:20px"><?php echo $getAbout['title']; ?></h1></center>
                         <div class="section_tittle_content">
-                            <span style="text-align:justify; line-height:21px">Palle 2 Patnam is the first online shopping and delivery
-                            to houses service in KSA. We are working cover all the Kingdom. Expanding coverage areas require 
-                            more time and effort to ensure the highest quality level of provided service. You can browse all
-							supported locations and add your mobile number to be notified every time we expand
-							into new areas.</span>
+                           <span style="text-align:justify; line-height:21px"><?php echo $getAbout['description']; ?></span>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
