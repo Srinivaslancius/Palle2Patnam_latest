@@ -149,6 +149,14 @@
               </a>
             </li> -->
             </li>
+            <li  class="<?php if($page_name == 'coverage_areas.php' || $page_name == 'add_coverage_areas.php' || $page_name == 'edit_coverage_areas.php') { echo "active"; } ?>">
+              <a href="coverage_areas.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-pin-drop zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Coverage Areas</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'customer_enqueries.php') { echo "active"; } ?>">
               <a href="customer_enqueries.php" aria-haspopup="true">
                 <span class="menu-icon">
