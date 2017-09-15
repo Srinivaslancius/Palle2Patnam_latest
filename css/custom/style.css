@@ -97,7 +97,7 @@ body {
         font-size: 32px;
         margin-bottom: 5px; } }
 
-a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
   animation-delay: 1.6s;
   background: #008000 none repeat scroll 0 0;
   color: #fff;
@@ -111,7 +111,7 @@ a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content 
   overflow: hidden;
   position: relative;
   z-index: 1; }
-  a.custom_btn:after, a.blog_btn:after, .welcome_area .single_welcome_slider .welcome_content a:after, .booking_area form.booking_form a:after, .blog2_area .single_blog .blog_content a.blog_btn:after {
+  .custom_btn:after, a.blog_btn:after, .welcome_area .single_welcome_slider .welcome_content a:after, .booking_area form.booking_form a:after, .blog2_area .single_blog .blog_content a.blog_btn:after {
     position: absolute;
     width: 158%;
     left: 125px;
@@ -123,20 +123,20 @@ a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content 
     z-index: -1;
     transform: rotate(-50deg);
     transition: 0.4s linear; }
-  a.custom_btn:hover:after, a.blog_btn:hover:after, .welcome_area .single_welcome_slider .welcome_content a:hover:after, .booking_area form.booking_form a:hover:after, .blog2_area .single_blog .blog_content a.blog_btn:hover:after {
+  .custom_btn:hover:after, a.blog_btn:hover:after, .welcome_area .single_welcome_slider .welcome_content a:hover:after, .booking_area form.booking_form a:hover:after, .blog2_area .single_blog .blog_content a.blog_btn:hover:after {
     visibility: visible;
     opacity: .1;
     height: 474%;
     left: -90px;
     top: -83px; }
   @media only screen and (min-width: 0px) and (max-width: 767px) {
-    a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+    .custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
       font-size: 13px;
       margin-top: 15px;
       padding: 10px 0;
       width: 130px; } }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
-    a.custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
+    .custom_btn, a.blog_btn, .welcome_area .single_welcome_slider .welcome_content a, .booking_area form.booking_form a, .blog2_area .single_blog .blog_content a.blog_btn {
       width: 150px;
       padding: 10px 0;
       font-size: 14px; } }
@@ -292,7 +292,7 @@ preloader area
         margin: -20px 0;
         padding: 55px 9px; }
         .header_bottom .main_menu > li > a:hover {
-          color: #FF5E18; }
+          color: #faab19; }
 		 
       .header_bottom .main_menu > li:hover > ul.sub_menu li {
         display: block;
@@ -720,7 +720,8 @@ welcome area
       line-height: 50px;
       margin-top: 25px;
       -webkit-animation-delay: .8s;
-      animation-delay: 0.8s; }
+      animation-delay: 0.8s;
+     margin-bottom:30px;	  }
     .welcome_area .single_welcome_slider .welcome_content a {
       -webkit-animation-delay: 1.1s;
       animation-delay: 1.1s; }
@@ -930,7 +931,7 @@ special_food area
 =====================================*/
 
 .application_screens {
-  padding: 95px 0 100px;
+  padding: 50px 0 90px;
   position: relative;
   overflow: hidden; 
   }
@@ -1075,15 +1076,16 @@ set_menu area
 =====================================*/
 .app_area {
   overflow: hidden;
-  padding-top: 35px;
+  padding-top: 30px;
+  padding-bottom:0px;
   position: relative;
   z-index: 1; 
   border-style: solid;
     border-width: 2px;
-    border-color: #f3f3f3;}
+    border-color: #f3f3f3;
+	height:210px;}
   .app_area:after {
     background-position: center center;
-	
 	}
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .app_area:after {
@@ -1136,9 +1138,11 @@ footer area
      color: white;
  }
 .footer_top_area {
-  background: #FFFFFF;
-  padding: 48px 0 50px;
-  margin-top:50px;}
+  background: #faab19;
+  padding: 30px 0 30px;
+  color:white;
+  margin-top:0px;
+  }
   /*=====================================
   .footer_top_area .footer_tittle {
     color: #333232;
@@ -1147,9 +1151,12 @@ footer area
     margin-bottom: 25px; }
 	=====================================*/
   .footer_top_area .footer_content p {
-    line-height: 26px; }
+    line-height: 26px;
+    color:#444444;
+    font-size:16px;
+    font-weight:570;	}
   .footer_top_area .footer_content span {
-    color: #0000;
+    color: #FFFFF;
     font-weight: 600;
     margin-bottom: 10px;
     margin-top: 20px; }
@@ -1187,9 +1194,6 @@ footer area
         margin: 4px 0;
         padding-left: 15px; }
   }
-		
-footer:hover a {
-  color: #FFFF; }
 /*============+++++-+/+/+/+/+/========+++++-+/+/+/+/+/================
              about_page area
 ==============+++++-+/+/+/+/+/==========+++++-+/+/+/+/+/===============*/

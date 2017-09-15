@@ -63,7 +63,7 @@
 			
                         <div class="col-sm-4">
                             <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                                <center><img src="img/1.png" alt=""></center>
+                                <center><img src="img/1.png" alt="image"></center>
                                 <center><h4 style="margin-bottom:10px">All kinds of products</h4></center>
                                 <span style="text-align:justify">Palle 2 Patnam provides you with a full
 								and varied list of groceries and home essentials
@@ -72,16 +72,16 @@
                         </div>
 						
                         <div class="col-sm-4">
-                            <div class="single_feature wow fadeInUp" data-wow-delay=".2s">
-                                <center><img src="img/2.png" alt=""></center>
+                            <div class="single_feature wow fadeInUp" data-wow-delay=".1s">
+                                <center><img src="img/2.png" alt="image"></center>
                                 <center><h4 style="margin-bottom:10px">Delivery to Any Place</h4></center>
                                 <span style="text-align:justify">If your address is within the supported locations. all you have to do is adding your address details to receive the order with the highest quality.</span>
                             </div>
                         </div>
 						
                         <div class="col-sm-4">
-                            <div class="single_feature  wow fadeInUp" data-wow-delay=".3s">
-                                <center><img src="img/55.png" alt=""></center>
+                            <div class="single_feature  wow fadeInUp" data-wow-delay=".2s">
+                                <center><img src="img/5.png" alt="image"></center>
                                 <center><h4 style="margin-bottom:10px">Scheduling Orders</h4></center>
                                 <span style="text-align:justify" >You can Prepare your e-cart now and schedule the delivery whenever it fits you.</span>
                             </div>
@@ -100,12 +100,12 @@
                     <div class="section_tittle">
                         <div class="section_tittle_content">
                             <h1>Soon Palle 2 Patnam will cover all areas in Hyderabad</h1>
-                            <span>Palle 2 patnam as the first online shopping and delivery to houses service in KSA We are looking
+                            <span>Palle 2 patnam as the first online shopping and delivery to houses service in Telangana We are looking
 							to cover all the Kingdom because you deserve the best. Expanding coverage areas need us more time and
 							effort to ensure the highest quality level of service. You can browse all supported locations and add
 							your mobile number to be notified every time we expand into new areas.</span>
                         </div><br>
-							<button type="button" class="btn btn-success btn-lg">Supported Locations</button>
+							<a href="coveragearea.php"><button type="button" class="btn btn-success btn-lg">Supported Locations</button></a>
                     </div>
                 </div>
 				<div class="col-md-6">
