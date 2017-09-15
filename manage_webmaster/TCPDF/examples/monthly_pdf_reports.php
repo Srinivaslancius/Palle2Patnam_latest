@@ -72,13 +72,13 @@ class MYPDF extends TCPDF {
     // Colored table
     public function ColoredTable($header,$data) {
         // Colors, line width and bold font
-        $this->SetFillColor(255, 0, 0);
+        $this->SetFillColor(53, 184, 99);
         $this->SetTextColor(255);
-        $this->SetDrawColor(128, 0, 0);
+        $this->SetDrawColor(173, 169, 162);
         $this->SetLineWidth(0.3);
         $this->SetFont('', 'B');
         // Header
-        $w = array(20, 20, 18, 17, 17, 17, 15, 18, 20, 16, 20);
+        $w = array(20, 20, 18, 17, 17, 16, 14, 18, 20, 16, 18);
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
@@ -96,12 +96,12 @@ class MYPDF extends TCPDF {
             $this->Cell($w[2], 6, $row[2], 'LR', 0, 'L', $fill);
             $this->Cell($w[3], 6, $row[3], 'LR', 0, 'L', $fill);
             $this->Cell($w[4], 6, $row[4], 'LR', 0, 'L', $fill);
-            $this->Cell($w[5], 6, $row[5], 'LR', 0, 'L', $fill);
-            $this->Cell($w[6], 6, $row[6], 'LR', 0, 'L', $fill);
-            $this->Cell($w[7], 6, $row[7], 'LR', 0, 'L', $fill);
-            $this->Cell($w[8], 6, $row[8], 'LR', 0, 'L', $fill);
-            $this->Cell($w[9], 6, $row[9], 'LR', 0, 'L', $fill);
-            $this->Cell($w[10], 6, $row[10], 'LR', 0, 'L', $fill);
+            $this->Cell($w[5], 6, $row[5], 'LR', 0, 'C', $fill);
+            $this->Cell($w[6], 6, $row[6], 'LR', 0, 'C', $fill);
+            $this->Cell($w[7], 6, $row[7], 'LR', 0, 'C', $fill);
+            $this->Cell($w[8], 6, $row[8], 'LR', 0, 'C', $fill);
+            $this->Cell($w[9], 6, $row[9], 'LR', 0, 'C', $fill);
+            $this->Cell($w[10], 6, $row[10], 'LR', 0, 'C', $fill);
             $this->Ln();
             $fill=!$fill;
         }

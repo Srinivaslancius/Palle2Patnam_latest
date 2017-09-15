@@ -99,13 +99,24 @@
                 <span class="menu-text">Milk Orders</span>
               </a>
               <ul class="sidebar-submenu collapse">
-                <li class="menu-subtitle">Reports</li>
-                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Reports</a></li> 
                 <li class="menu-subtitle">Milk Reports</li>
                 <li class="menu-subtitle">Milk Orders</li>
                 <li class="<?php if($page_name == 'milk_orders.php' || $page_name == 'add_milk_order.php') { echo "active"; } ?>"><a href="milk_orders.php">Milk Orders</a></li> 
                 <li class="<?php if($page_name == 'extra_milk_orders.php' || $page_name == 'add_extra_milk_order.php') { echo "active"; } ?>"><a href="extra_milk_orders.php">Extra Milk Orders</a></li>
                 <li class="<?php if($page_name == 'cancel_milk_orders.php' || $page_name == 'add_cancel_milk_order.php') { echo "active"; } ?>"><a href="cancel_milk_orders.php">Cancel Milk Orders</a></li>
+              </ul>
+            </li>
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-accounts zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Reports</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Vendor Reports</li>
+                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Vendor Reports</a></li> 
+                
               </ul>
             </li>
             <!-- <li class="with-sub">

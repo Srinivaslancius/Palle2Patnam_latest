@@ -94,13 +94,13 @@ $pdf->Write(0, " ".$getUserNameName['vendor_name']."", '', 0, 'C', true, 0, fals
 $pdf->SetFont('helvetica', 'B', 8);
 // -----------------------------------------------------------------------------
 
-   $tbl = '<table cellspacing="0" cellpadding="2" border="1">
-    <tr style="background-color:green;color:white;">
-        <td align="center"><strong>Package Name</strong></td>
+   $tbl = '<table cellspacing="0" cellpadding="2" style="border-collapse:collapse;border:2px solid gray">
+    <tr style="background-color:#35b863;color:#ffffff;">
+        <td align="center" style="padding:8px"><strong>Package Name</strong></td>
         <td align="center"><strong>Total Ltrs</strong></td>    
     </tr>';
     
-    $tbl .='<tr style="background-color:white;"><td align="center">Monthly -  Milk </td><td align="center"> '.$row['total_milk_vendor_ltrs'].' </td></tr>';
+    $tbl .='<tr style="background-color:#ffffff;" ><td style="font-style: normal;padding:8px" align="center">Monthly -  Milk </td><td style="font-style:normal;padding:8px" align="center"> '.$row['total_milk_vendor_ltrs'].' </td></tr>';
     $tbl .= '</table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
