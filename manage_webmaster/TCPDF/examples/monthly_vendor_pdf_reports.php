@@ -66,13 +66,13 @@ class MYPDF extends TCPDF {
     // Colored table
     public function ColoredTable($header,$data) {
         // Colors, line width and bold font
-        $this->SetFillColor(255, 0, 0);
+        $this->SetFillColor(53, 184, 99);
         $this->SetTextColor(255);
-        $this->SetDrawColor(128, 0, 0);
+        $this->SetDrawColor(173, 169, 162);
         $this->SetLineWidth(0.3);
         $this->SetFont('', 'B');
         // Header
-        $w = array(30, 30, 30);
+        $w = array(60, 60, 60);
         $num_headers = count($header);
         for($i = 0; $i < $num_headers; ++$i) {
             $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
@@ -80,16 +80,16 @@ class MYPDF extends TCPDF {
         $this->Ln();
         // Color and font restoration
         $this->SetFillColor(224, 235, 255);
-        $this->SetTextColor(0);
+        $this->SetTextColor(39,37,34);
         $this->SetFont('');
         // Data
         $fill = 0;
          
         foreach($data as $row) {
             $getVendorName = getIndividualDetails($row[0],'vendors','id');
-            $this->Cell($w[0], 6, $getVendorName['vendor_name'], 'LR', 0, 'L', $fill);
-            $this->Cell($w[1], 6, "Milk", 'LR', 0, 'L', $fill);
-            $this->Cell($w[2], 6, $row[2], 'LR', 0, 'L', $fill);
+            $this->Cell($w[0], 6, $getVendorName['vendor_name'], 'LR', 0, 'C', $fill);
+            $this->Cell($w[1], 6, "Milk", 'LR', 0, 'C', $fill);
+            $this->Cell($w[2], 6, $row[2], 'LR', 0, 'C', $fill);
            
             $this->Ln();
             $fill=!$fill;

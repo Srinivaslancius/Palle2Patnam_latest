@@ -49,7 +49,6 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
 ?>  
 <html lang="en">
 <head>
-  <title>User Milk Reports</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -128,33 +127,30 @@ h3{
   </div>
 </div>
 <div class="container-fluid one">
-<div class="form-group">
-<form name="search" method="post" autocomplete="off">
-<div class="row">
-  
-  <div class="col-sm-3">
-    <select class="form-control" id="select-users" name="user_id">
-      <option value="">Select Users</option>
-          <?php while ($getAllUsers = $result->fetch_assoc()) { ?>
-            <option <?php if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['user_name']; ?></option>
-          <?php } ?>
-    </select>     
-  </div>      
-  <div class="col-sm-3">
-    <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date"  value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
+  <div class="form-group">
+    <form name="search" method="post" autocomplete="off">
+    <div class="row">
+      <div class="col-sm-3">
+        <select class="form-control" id="select-users" name="user_id">
+          <option value="">Select Users</option>
+              <?php while ($getAllUsers = $result->fetch_assoc()) { ?>
+                <option <?php if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['user_name']; ?></option>
+              <?php } ?>
+        </select>     
+      </div>      
+      <div class="col-sm-3">
+        <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date"  value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
+      </div>
+      <div class="col-sm-3">
+        <input class="form-control" type="text" id="end_date" name="end_date" placeholder="End Date" value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
+      </div>
+      <div class="col-sm-3">
+        <input class="btn btn-primary" type="submit" name="search" value="Search">
+        <input class="btn btn-primary" type="submit" name="reset" value="Reset" id="reset">
+      </div>
+    </div>
+    </form>
   </div>
-  <div class="col-sm-3">
-    <input class="form-control" type="text" id="end_date" name="end_date" placeholder="End Date" value="<?php if(isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') { echo $_REQUEST['end_date'];  } ?>">
-  </div>
-  <div class="col-sm-3">
-    <input class="btn btn-primary" type="submit" name="search" value="Search">
-    <input class="btn btn-primary" type="submit" name="reset" value="Reset" id="reset">
-  </div>
-  
-</div>
-</div>
-</form>
-</div>
 </div>
 <div class="container-fluid two">
 <center><table>
