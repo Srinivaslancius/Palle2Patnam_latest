@@ -1,10 +1,3 @@
-<?php 
-ob_start();
-include_once('manage_webmaster/admin_includes/config.php');
-include_once('manage_webmaster/admin_includes/common_functions.php');
-$getSiteSettingsData = getDataFromTables('site_settings',$status=NULL,'id','1',$activeStatus=NULL,$activeTop=NULL);
-$getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
-?>
 <!DOCTYPE html>
 <html>
 
@@ -13,7 +6,7 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title><?php echo $getSiteSettingsData1['admin_title']; ?></title>
+    <title>Palle 2 Patnam</title>
 
     <!-- === webfont=== -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
@@ -70,10 +63,11 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
 							</nav>
 						</div>
 						<div class="col-sm-5">
-                            <a href="index.php" class="log"><img src="uploads/logo/<?php echo $getSiteSettingsData1['logo']; ?>" alt="Palle2Patnam" class="img-responsive"></a>
+                            <a href="index.php" class="log"><img src="img/logo.png" alt="logo" class="img-responsive"></a>
                         </div>
 						 <div class="col-sm-2"><br>
-							<a href="https://play.google.com/store/apps/details?id=com.lancius.palle2patnam&hl=en"><button type="button" class="btn btn-success btn-lg">Download App</button></a>
+							<a href="https://play.google.com/store/apps/details?id=com.lancius.palle2patnam&hl=en"><img src="img/GP.png" 
+								alt="image"></a>
                         </div>
                     </div>
                 </div>
