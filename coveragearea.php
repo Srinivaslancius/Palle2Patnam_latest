@@ -61,46 +61,38 @@
             <div class="row">
 			    <div class="col-sm-2">
 				</div>
-                <div class="col-sm-2">
-                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><h4 style="margin-bottom:12px">Hyderabad</h4>
-						<h4 style="margin-bottom:12px">Madhapur</h4>
-					    <h4 style="margin-bottom:12px">Secundrabad</h4>
-						<h4 style="margin-bottom:12px">Thirumalgiri</h4>
-						<h4 style="margin-bottom:12px">Ranga Reddy</h4>
-						<h4 style="margin-bottom:12px">Sanga Reddy</h4></center>
-                    </div>
-				</div>
-						
+
+                <?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
                  <div class="col-sm-2">
                     <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><h4 style="margin-bottom:12px">Hyderabad</h4>
-						<h4 style="margin-bottom:12px">Madhapur</h4>
-					    <h4 style="margin-bottom:12px">Secundrabad</h4>
-						<h4 style="margin-bottom:12px">Thirumalgiri</h4>
-						<h4 style="margin-bottom:12px">Ranga Reddy</h4>
-						<h4 style="margin-bottom:12px">Sanga Reddy</h4></center>
+                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
+                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
+                        <?php } ?>
+                    </div>
+                </div>
+				<?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>	
+                 <div class="col-sm-2">
+                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
+                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
+                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
+                        <?php } ?>
 					</div>
 				</div>
 						
-                <div class="col-sm-2">
+                <?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
+                 <div class="col-sm-2">
                     <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><h4 style="margin-bottom:12px">Hyderabad</h4>
-						<h4 style="margin-bottom:12px">Madhapur</h4>
-					    <h4 style="margin-bottom:12px">Secundrabad</h4>
-						<h4 style="margin-bottom:12px">Thirumalgiri</h4>
-						<h4 style="margin-bottom:12px">Ranga Reddy</h4>
-						<h4 style="margin-bottom:12px">Sanga Reddy</h4></center>
-					</div>
-				</div>
-				<div class="col-sm-2">
+                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
+                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
+                        <?php } ?>
+                    </div>
+                </div>
+				<?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
+                 <div class="col-sm-2">
                     <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <center><h4 style="margin-bottom:12px">Hyderabad</h4>
-						<h4 style="margin-bottom:12px">Madhapur</h4>
-					    <h4 style="margin-bottom:12px">Secundrabad</h4>
-						<h4 style="margin-bottom:12px">Thirumalgiri</h4>
-						<h4 style="margin-bottom:12px">Ranga Reddy</h4>
-						<h4 style="margin-bottom:12px">Sanga Reddy</h4></center>
+                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
+                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
+                        <?php } ?>
                     </div>
                 </div>
 				<div class="col-sm-2">
