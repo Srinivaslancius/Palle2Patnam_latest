@@ -1,50 +1,10 @@
     <?php include_once 'header.php'; ?>
-
-        <!--welcome area Start-->
-        <div class="welcome_area">
-            <div class="welcome_slider">
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-                                    <h1 style="margin-bottom:30px">Neatly. Delightedly. Quietly.</h1>
-									<span style="line-height:40px">Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg2.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-									<h1 style="margin-bottom:30px">Neatly. Delightedly. Quietly.</h1>
-									<span style="line-height:40px">Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg3.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-                                    <h1 style="margin-bottom:30px">Neatly. Delightedly. Quietly.</h1>
-									<span style="line-height:40px">Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--welcome area end-->
-    </div>
-    <!--Hero area end-->
-
+    <?php include_once 'slider.php';?>
+    <?php 
+        $sql="SELECT * from `content_pages` WHERE status = 0  ORDER BY id DESC LIMIT 1,3 ";
+        $result = $conn->query($sql);
+    ?>
+    <?php $getAboutData = getDataFromTables("content_pages",$status=NULL,"id",'6',$activeStatus=NULL,$activeTop=NULL); $getAbout = $getAboutData->fetch_assoc();?>   
     <!--Combo_offer area start-->
     <div class="features">
         <div class="container">
@@ -60,34 +20,16 @@
                 </div>
             </div>
             <div class="row">
-			
+			        <?php while($getRow = $result->fetch_assoc()) { ?> 
                         <div class="col-sm-4">
                             <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                                <center><img src="img/1.png" alt="image"></center>
-                                <center><h4 style="margin-bottom:10px">All kinds of products</h4></center>
-                                <span style="text-align:justify">Palle 2 Patnam provides you with a full
-								and varied list of groceries and home essentials
-								neatly classified to shop with your fingertips.</span>
+                                <center><img src="<?php echo $base_url . 'uploads/content_images/'.$getRow['image'] ?>" alt="image"></center>
+                                <center><h4 style="margin-bottom:10px"><?php echo $getRow['title']?></h4></center>
+                                <span style="text-align:justify"><?php echo $getRow['description']?></span>
                             </div>
                         </div>
-						
-                        <div class="col-sm-4">
-                            <div class="single_feature wow fadeInUp" data-wow-delay=".1s">
-                                <center><img src="img/2.png" alt="image"></center>
-                                <center><h4 style="margin-bottom:10px">Delivery to Any Place</h4></center>
-                                <span style="text-align:justify">If your address is within the supported locations. all you have to do is adding your address details to receive the order with the highest quality.</span>
-                            </div>
-                        </div>
-						
-                        <div class="col-sm-4">
-                            <div class="single_feature  wow fadeInUp" data-wow-delay=".2s">
-                                <center><img src="img/5.png" alt="image"></center>
-                                <center><h4 style="margin-bottom:10px">Scheduling Orders</h4></center>
-                                <span style="text-align:justify" >You can Prepare your e-cart now and schedule the delivery whenever it fits you.</span>
-                            </div>
-                        </div>
-						
-                </div>
+						<?php } ?>
+            </div>
             </div>
         </div>
     <!--Combo_offer area end-->
@@ -99,18 +41,15 @@
                 <div class="col-md-6">
                     <div class="section_tittle">
                         <div class="section_tittle_content">
-                            <h1>Soon Palle 2 Patnam will cover all areas in Hyderabad</h1>
-                            <span>Palle 2 patnam as the first online shopping and delivery to houses service in Telangana We are looking
-							to cover all the Kingdom because you deserve the best. Expanding coverage areas need us more time and
-							effort to ensure the highest quality level of service. You can browse all supported locations and add
-							your mobile number to be notified every time we expand into new areas.</span>
+                            <h1><?php echo $getAbout['title']; ?></h1>
+                            <span><?php echo $getAbout['description']; ?></span>
                         </div><br>
 							<a href="coveragearea.php"><button type="button" class="btn btn-success btn-lg">Supported Locations</button></a>
                     </div>
                 </div>
 				<div class="col-md-6">
 					<div class="single_feature wow fadeInUp" data-wow-delay=".2s">
-						<img src="img/01.png" alt="" width="500" height="350">
+						<img src="<?php echo $base_url . 'uploads/content_images/'.$getAbout['image'] ?>" alt="" width="500" height="350">
 					</div>
 				</div>
 			</div>

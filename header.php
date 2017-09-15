@@ -5,6 +5,11 @@ include_once('manage_webmaster/admin_includes/common_functions.php');
 $getSiteSettingsData = getDataFromTables('site_settings',$status=NULL,'id','1',$activeStatus=NULL,$activeTop=NULL);
 $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
 ?>
+<?php 
+    $currentFile = $_SERVER["PHP_SELF"];
+    $parts = Explode('/', $currentFile);
+    $page_name = $parts[count($parts) - 1];
+?>
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +51,7 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
 			margin-top: 0px;
 			margin-bottom:100px;
 		}
-	</style>
+    </style>
 </head>
 
 <body>
@@ -54,6 +59,7 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
     
     <!--preloader area end-->
     <!--Hero area Start-->
+    
  <div class="hero_area">
         <header>
             <div class="header_bottom">
@@ -62,11 +68,11 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
                         <div class="col-sm-5">
                             <nav class="menu_bar">
                                 <ul class="main_menu hidden-xs">
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="coveragearea.php">Coverage Area</a></li>
-                                    <li><a href="about.php">About Us</a></li>
-                                    <li><a href="contactus.php">Contact Us</a></li>
-								</ul>
+                                    <li <?php if($page_name == 'index.php') {  ?> class="active" <?php } ?>> <a href="index.php">Home</a></li>
+                                    <li <?php if($page_name == 'coveragearea.php') {  ?> class="active" <?php } ?>> <a href="coveragearea.php">Coverage Area</a></li>
+                                    <li <?php if($page_name == 'about.php') {  ?> class="active" <?php } ?>> <a href="about.php">About Us</a></li>
+                                    <li <?php if($page_name == 'contactus.php') {  ?> class="active" <?php } ?>> <a href="contactus.php">Contact Us</a></li>
+                                </ul>
 							</nav>
 						</div>
 						<div class="col-sm-5">

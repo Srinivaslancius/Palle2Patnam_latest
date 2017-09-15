@@ -1,44 +1,5 @@
     <?php include_once 'header.php'; ?>
-        <div class="welcome_area">
-            <div class="welcome_slider">
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-                                    <h1>Neatly. Delightedly. Quietly.</h1>
-									<span>Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg2.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-									<h1>Neatly. Delightedly. Quietly.</h1>
-									<span>Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_welcome_slider" style="background-image:url(img/welcome_bg3.jpg)">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-7 col-sm-8">
-                                <div class="welcome_content">
-                                    <h1>Neatly. Delightedly. Quietly.</h1>
-									<span>Get Your Fresh Grocery Delivered to You whenever you want it.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <?php include_once 'slider.php';?>    
     <!--Hero area end-->
 
     <!--Combo_offer area start-->
