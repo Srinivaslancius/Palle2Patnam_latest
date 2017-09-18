@@ -7,10 +7,11 @@ $id = $_GET['id'];
     //Save data into database
     
     $vendor_id = $_POST['vendor_id'];
+    $price = $_POST['price'];
     $milk_in_ltrs  = $_POST['milk_in_ltrs'];
     $date = date_create($_POST['created_date']);
     $created_date = date_format($date,"Y-m-d");
-        $sql = "UPDATE vendor_milk_assign SET vendor_id = '$vendor_id',milk_in_ltrs = '$milk_in_ltrs',created_date = '$created_date' WHERE id='$id'";
+        $sql = "UPDATE vendor_milk_assign SET vendor_id = '$vendor_id',price = '$price',milk_in_ltrs = '$milk_in_ltrs',created_date = '$created_date' WHERE id='$id'";
         if($conn->query($sql) === TRUE) {
            echo "<script type='text/javascript'>window.location='milk_vendors.php?msg=success'</script>";
         }else {
@@ -42,7 +43,11 @@ $id = $_GET['id'];
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
-
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." value="<?php echo $getMilkVendors1['price'];?>"  required >
+                    <div class="help-block with-errors"></div>
+                  </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Milk in Ltrs</label>
                     <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." value="<?php echo $getMilkVendors1['milk_in_ltrs'];?>"  required onkeypress="return isNumberKey(event)">

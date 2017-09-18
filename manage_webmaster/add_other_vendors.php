@@ -5,11 +5,14 @@ if (!isset($_POST['submit']))  {
 } else {
     //Save data into database
     $vendor_id = $_POST['vendor_id'];
+    $category_id = $_POST['category_id'];
+    $item_weight = $_POST['item_weight'];
+    $price = $_POST['price'];
     $item_name  = $_POST['item_name'];
     $date = date_create($_POST['created_date']);
     $created_date = date_format($date,"Y-m-d");
     $status = $_POST['status'];
-  	$sql = "INSERT INTO vendor_vegitables_assign (`vendor_id`,`item_name`,`created_date`,`status`) VALUES ('$vendor_id','$item_name', '$created_date', '$status')";
+  	$sql = "INSERT INTO vendor_vegitables_assign (`vendor_id`,`category_id`,`item_weight`,`price`,`item_name`,`created_date`,`status`) VALUES ('$vendor_id','$category_id','$item_weight','$price','$item_name', '$created_date', '$status')";
     if($conn->query($sql) === TRUE) {
     	echo "<script type='text/javascript'>window.location='other_vendors.php?msg=success'</script>";
     }else {
@@ -39,9 +42,30 @@ if (!isset($_POST['submit']))  {
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
+                  <?php $getCategories = getAllDataCheckActiveRecords('categories',0);?>
+                  <div class="form-group">
+                    <label for="form-control-3" class="control-label">Choose Category</label>
+                    <select id="form-control-3" name="category_id" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Category</option>
+                      <?php while($row = $getCategories->fetch_assoc()) {  ?>
+                        <option value="<?php echo $row['id']; ?>"><?php echo $row['category_name']; ?></option>
+                      <?php } ?>
+                   </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Item Name</label>
                     <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name" data-error="Please enter item name." required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Item Weight</label>
+                    <input type="text" class="form-control" id="item_weight" name="item_weight" placeholder="Item Weight" data-error="Please enter item weight." required>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter price." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
