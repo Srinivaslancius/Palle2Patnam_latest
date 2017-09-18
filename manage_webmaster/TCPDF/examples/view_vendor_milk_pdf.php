@@ -86,8 +86,9 @@ class MYPDF extends TCPDF {
         $this->SetFont('');
         // Data
         $fill = 0;
+        $i=1;
         foreach($data as $row) {
-            $this->Cell($w[0], 6, $row[0], 'LR', 0, 'L', $fill);
+            $this->Cell($w[0], 6, $i, 'LR', 0, 'L', $fill);
             $this->Cell($w[1], 6, $row[1], 'LR', 0, 'L', $fill);
             $this->Cell($w[2], 6, $row[2], 'LR', 0, 'L', $fill);
             $this->Cell($w[3], 6, $row[3], 'LR', 0, 'L', $fill);
@@ -95,6 +96,7 @@ class MYPDF extends TCPDF {
             $this->Cell($w[5], 6, $row[5], 'LR', 0, 'L', $fill);
             $this->Ln();
             $fill=!$fill;
+            $i++;
         }
         $this->Cell(array_sum($w), 0, '', 'T');
     }
