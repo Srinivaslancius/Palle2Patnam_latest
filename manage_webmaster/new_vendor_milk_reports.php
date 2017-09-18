@@ -157,6 +157,7 @@ h3{
 </div>
 </div>
 <div class="container-fluid two">
+<form method="POST">  
 <center><table>
   <tr>
     <th>Id</th>
@@ -180,6 +181,7 @@ h3{
   </tr>
   <?php $i++;  } ?>
 </table></center>
+</form>
 </div>
 <div class="container-fluid footer">
     <center><a href="TCPDF/examples/monthly_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
