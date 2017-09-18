@@ -49,6 +49,7 @@
                     <th>Mobile No</th>
                     <th>created Date</th>
                     <th>Order Status</th>
+                    <th>Payment Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -61,6 +62,7 @@
                     <td><?php echo $res1['mobile'];?></td>
                     <td><?php echo $res1['order_date'];?></td>                 
                     <td><?php if ($res1['order_status']==1) { echo "Pending" ;} elseif($res1['order_status']==2) { echo "Completed" ;} else{ echo "Cancelled";}?></td>
+                    <td><?php if ($res1['payment_status']==1) { echo "Pending" ;} else{ echo "Completed";}?></td>
                     <td><a href="edit_orders.php?oid=<?php echo $res1['id'];?>"><i class="zmdi zmdi-edit"></i></a> &nbsp;<a href="#" class="click_view" data-modalId="<?php echo $res1['id']?>"><i class="zmdi zmdi-eye zmdi-hc-fw" data-toggle="modal" data-target="#successModal2" class=""></i></a></td>
                      <!-- Open Modal Box  here -->
                     <div id="myModal_<?php echo $res1['id']; ?>" class="modal fade" >
