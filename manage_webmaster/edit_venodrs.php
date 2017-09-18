@@ -5,11 +5,12 @@ $id = $_GET['id'];
             echo "";
     } else  {            
 
-    $vendor_name = $_POST['vendor_name']; 
+    $vendor_name = $_POST['vendor_name'];
+    $mobile = $_POST['mobile']; 
     $created_date = date("Y-m-d h:i:s");                                   
     $status = $_POST['status'];
     
-        $sql = "UPDATE `vendors` SET vendor_name = '$vendor_name', created_date = '$created_date',status='$status' WHERE id = '$id' ";
+        $sql = "UPDATE `vendors` SET vendor_name = '$vendor_name', mobile = '$mobile', created_date = '$created_date',status='$status' WHERE id = '$id' ";
         if($conn->query($sql) === TRUE){
            echo "<script type='text/javascript'>window.location='vendors.php?msg=success'</script>";
         } else {
@@ -32,6 +33,12 @@ $id = $_GET['id'];
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Vendor Name</label>
                     <input type="text" name="vendor_name" class="form-control" id="vendor_name" placeholder="Vendor Name" data-error="Please enter Name" required value="<?php echo $getVendors1['vendor_name'];?>">
+                    <div class="help-block with-errors"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Mobile</label>
+                    <input type="text" name="mobile" class="form-control" id="form-control-2" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" value="<?php echo $getVendors1['mobile'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
 

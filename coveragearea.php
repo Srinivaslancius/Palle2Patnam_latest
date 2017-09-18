@@ -18,39 +18,15 @@
 			    <div class="col-sm-2">
 				</div>
 
-                <?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
-                 <div class="col-sm-2">
-                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
-                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
-                        <?php } ?>
-                    </div>
-                </div>
 				<?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>	
-                 <div class="col-sm-2">
+                 <div class="col-sm-12">
                     <div class="single_feature wow fadeInUp" data-wow-delay="0s">
                         <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
                             <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
                         <?php } ?>
 					</div>
 				</div>
-						
-                <?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
-                 <div class="col-sm-2">
-                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
-                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
-                        <?php } ?>
-                    </div>
-                </div>
-				<?php $getCoverageAreas = getDataFromTables('coverage_areas','0',$clause=NULL,$id=NULL,$activeStatus=NULL,$activeTop=NULL);?>   
-                 <div class="col-sm-2">
-                    <div class="single_feature wow fadeInUp" data-wow-delay="0s">
-                        <?php while ( $getCoverageAreas1 = $getCoverageAreas->fetch_assoc()) { ?>
-                            <center><h4 style="margin-bottom:12px"><?php echo $getCoverageAreas1['location_name'];?></h4>
-                        <?php } ?>
-                    </div>
-                </div>
+
 				<div class="col-sm-2">
 				</div>
             </div>

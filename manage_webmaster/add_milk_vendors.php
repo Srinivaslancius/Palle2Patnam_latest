@@ -5,10 +5,11 @@ if (!isset($_POST['submit']))  {
 } else {
     //Save data into database
     $vendor_id = $_POST['vendor_id'];
+    $price = $_POST['price'];
     $milk_in_ltrs  = $_POST['milk_in_ltrs'];
     $date = date_create($_POST['created_date']);
     $created_date = date_format($date,"Y-m-d");
-  	$sql = "INSERT INTO vendor_milk_assign (`vendor_id`,`milk_in_ltrs`,`created_date`) VALUES ('$vendor_id','$milk_in_ltrs', '$created_date')";
+  	$sql = "INSERT INTO vendor_milk_assign (`vendor_id`,`price`,`milk_in_ltrs`,`created_date`) VALUES ('$vendor_id','$price','$milk_in_ltrs', '$created_date')";
     if($conn->query($sql) === TRUE) {
     	echo "<script type='text/javascript'>window.location='milk_vendors.php?msg=success'</script>";
     }else {
@@ -31,11 +32,16 @@ if (!isset($_POST['submit']))  {
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose Vendor</label>
                     <select id="form-control-3" name="vendor_id" class="custom-select" data-error="This field is required." required>
-                      <option value="">Select vendor</option>
+                      <option value="">Select Vendor</option>
                       <?php while($row = $getVendors->fetch_assoc()) {  ?>
                         <option value="<?php echo $row['id']; ?>"><?php echo $row['vendor_name']; ?></option>
                       <?php } ?>
                    </select>
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-control-2" class="control-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">

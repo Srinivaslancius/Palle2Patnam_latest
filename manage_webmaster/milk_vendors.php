@@ -27,6 +27,8 @@
                   <tr>
                     <th>S.No</th>
                     <th>Vendor Name</th>
+                    <th>Price</th>
+                    <th>Milk in Lts</th>
                     <th>Created Date</th>
                     <th>Actions</th>
                   </tr>
@@ -36,6 +38,8 @@
                   <tr>
                     <td><?php echo $i;?></td>
                     <td><?php $getVendorName = getDataFromTables('vendors',$status=NULL,'id',$row['vendor_id'],$activeStatus=NULL,$activeTop=NULL); $getName = $getVendorName->fetch_assoc(); echo $getName['vendor_name']; ?></td>
+                    <td><?php echo $row['price'];?></td>
+                    <td><?php echo $row['milk_in_ltrs'];?></td>
                     <td><?php echo $row['created_date'];?></td>
                     <td> <a href="edit_milk_venodrs.php?id=<?php echo $row['id']; ?>"><i class="zmdi zmdi-edit"></i></a></td>
                     
