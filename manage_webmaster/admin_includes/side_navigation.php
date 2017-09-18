@@ -114,8 +114,8 @@
                 <span class="menu-text">Reports</span>
               </a>
               <ul class="sidebar-submenu collapse">
-                <li class="menu-subtitle">Vendor Reports</li>
-                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Vendor Reports</a></li> 
+                <li class="menu-subtitle">Milk Vendor Reports</li>
+                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Milk Vendor Reports</a></li> 
                 
               </ul>
             </li>
