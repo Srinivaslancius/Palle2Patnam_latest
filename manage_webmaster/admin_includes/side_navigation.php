@@ -132,14 +132,14 @@
                 <li class="menu-subtitle">Milk Reports</li>
               </ul>
             </li> -->
-            <!-- <li  class="<?php if($page_name == 'orders.php') { echo "active"; } ?>">
+            <li  class="<?php if($page_name == 'orders.php') { echo "active"; } ?>">
               <a href="orders.php" aria-haspopup="true">
                 <span class="menu-icon">
                    <i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i>
                 </span>
                 <span class="menu-text">Orders</span>
               </a>
-            </li> --> 
+            </li> 
             <!-- <li  class="<?php if($page_name == 'product_offers.php' || $page_name == 'add_product_offers.php' || $page_name == 'edit_product_offers.php') { echo "active"; } ?>">
               <a href="product_offers.php" aria-haspopup="true">
                 <span class="menu-icon">
