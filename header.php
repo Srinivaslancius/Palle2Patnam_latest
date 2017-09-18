@@ -51,7 +51,7 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
 			margin-top: 0px;
 			margin-bottom:100px;
 		}
-    </style>
+	</style>
 </head>
 
 <body>
@@ -59,7 +59,6 @@ $getSiteSettingsData1 = $getSiteSettingsData->fetch_assoc();
     
     <!--preloader area end-->
     <!--Hero area Start-->
-    
  <div class="hero_area">
         <header>
             <div class="header_bottom">
