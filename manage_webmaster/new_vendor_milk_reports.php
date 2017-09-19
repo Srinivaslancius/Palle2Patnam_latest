@@ -180,7 +180,17 @@ h3{
     <td> <a href="TCPDF/examples/view_vendor_milk_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
   </tr>
   <?php $i++;  } ?>
-</table></center>
+</table>
+  <?php 
+    if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='' && isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') {
+      $start_date = $_REQUEST['start_date'];
+      $end_date = $_REQUEST['end_date'];
+    } else {
+      $start_date = '';
+      $end_date = '';
+    }
+  ?>
+</center>
 </form>
 </div>
 <div class="container-fluid footer">
