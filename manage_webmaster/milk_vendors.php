@@ -9,7 +9,7 @@
           </div>
           <div class="panel-body">
             <div class="table-responsive">
-          <?php $sql = "SELECT vendors.id, vendors.vendor_name FROM vendors LEFT JOIN vendor_milk_assign ON vendors.id=vendor_milk_assign.vendor_id GROUP BY vendors.id";
+          <?php $sql = "SELECT vendors.id, vendors.vendor_name FROM vendor_milk_assign LEFT JOIN vendors ON vendors.id=vendor_milk_assign.vendor_id GROUP BY vendors.id";
               $result = $conn->query($sql);
           ?>
           <div class="form-group col-md-4">            
