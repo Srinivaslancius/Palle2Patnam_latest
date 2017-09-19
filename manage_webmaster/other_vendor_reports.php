@@ -8,38 +8,33 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   //Date format changes
   $table = "vendor_vegitables_assign";
   $user_id = $_POST['vendor_id'];
-  $category_id = $_POST['category_id'];
-  $item_weight = $_POST['item_weight'];
-  $item_name = $_POST['item_name'];
-  //$price = $_POST['price'];
-  $created_date = $_POST['created_date'];
-  /*$start_date = $_POST['start_date'];
-  $end_date = $_POST['end_date'];*/
+  $start_date = $_POST['start_date'];
+  $end_date = $_POST['end_date'];
   //echo "<pre>"; print_r($_REQUEST); die;
   //Set From and To dates depends on databse search results
-  $from_change_format =  date("Y-m-d", strtotime($created_date));                        
-  $to_change_format   =  date("Y-m-d", strtotime($created_date));
+  $from_change_format =  date("Y-m-d", strtotime($start_date));                        
+  $to_change_format   =  date("Y-m-d", strtotime($end_date));
 
-  if(isset($user_id) && $user_id!='' && isset($created_date) && $created_date!='') {
+  if(isset($user_id) && $user_id!='' && isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
-    //echo "SELECT * FROM {$statement} "; 
+    //echo "SELECT * FROM {$statement} ";
     $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='') {
+  } elseif(isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='' && isset($user_id) && $user_id!='' ) {
+  } elseif(isset($start_date) && $start_date!='' && isset($user_id) && $user_id!='' ) {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
   } elseif(isset($user_id) && $user_id!='') {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' GROUP BY `vendor_id` ";
     $getData = $conn->query("SELECT  *,SUM(price) AS total_price FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='' ) {
+  } elseif(isset($start_date) && $start_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");   
-  } elseif(isset($created_date) && $created_date!='' ) {
+  } elseif(isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");   

@@ -112,7 +112,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT vendors.id,vendors.vendor_name FROM vendors LEFT JOIN vendor_milk_assign ON vendor_milk_assign.vendor_id=vendors.id GROUP BY vendor_milk_assign.vendor_id";
+  <?php $sql = "SELECT vendors.id,vendors.vendor_name FROM vendor_milk_assign LEFT JOIN vendors ON vendor_milk_assign.vendor_id=vendors.id GROUP BY vendor_milk_assign.vendor_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
