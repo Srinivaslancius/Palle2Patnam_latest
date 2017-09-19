@@ -190,14 +190,14 @@ h3{
     <td><center><?php echo $row['item_name']; ?><center></td>
     <td><?php echo $row['item_weight'];?></td> 
     <td><?php echo $row['price']; ?></td>
-    <td> <a href="TCPDF/examples/other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
+    <td> <a href="TCPDF/examples/view_other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
   </tr>
   <?php $i++;  } ?>
 </table></center>
 </form>
 </div>
 <div class="container-fluid footer">
-    <center><a href="TCPDF/examples/other_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
+    <center><a href="TCPDF/examples/monthly_other_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
 </div>
 </body>
 </html>
