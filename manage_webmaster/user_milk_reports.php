@@ -111,7 +111,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT users.id,users.user_name FROM users LEFT JOIN milk_orders ON milk_orders.user_id=users.id GROUP BY milk_orders.user_id";
+  <?php $sql = "SELECT users.id,users.user_name FROM milk_orders LEFT JOIN users ON milk_orders.user_id=users.id GROUP BY milk_orders.user_id";
       $result = $conn->query($sql);
   ?>
 <div class="container-fluid header">
