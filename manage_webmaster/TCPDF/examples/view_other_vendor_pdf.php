@@ -117,10 +117,9 @@ $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-co
  </tr>';
  $i=1;
  //$totalLtrs=0;
- //$grandTotal=0;
+ $grandTotal=0;
 while ($getData= $resultset->fetch_array()){
-    //$totalLtrs += $milkOrderData['milk_in_ltrs'];
-    //$grandTotal += $milkOrderData['TotalLtrPrice'];
+    $grandTotal += $getData['price'];
     //echo "<pre>"; print_r($milkOrderData); die;
 $tbl .='<tr style="border-bottom:0">
   <td>'.$i.'</td>  
@@ -133,17 +132,18 @@ $tbl .='<tr style="border-bottom:0">
 
 $i++; }
 $tbl .='</table>';
-/*$tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
+$tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Grand Total</th>
+  <th colspan="6" align="center" align="center" style="background-color: #4CAF50 ; color: white; font-weight:bold">Grand Total</th>
  </tr>
  <tr>
   <td></td>  
   <td></td>
-  <td>'.$totalLtrs.'</td>
+  <td></td>
+  <td></td>
   <td></td> 
   <td>'.$grandTotal.'</td>
- </tr></table>';*/
+ </tr></table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 

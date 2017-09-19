@@ -29,16 +29,23 @@
 include_once('../../admin_includes/config.php');
 include_once('../../admin_includes/common_functions.php');
 require_once('tcpdf_include.php');
-$uid = $_GET['uid'];
 
-$getSelData = "SELECT vendor_milk_assign.id,vendors.vendor_name,vendor_milk_assign.created_date,vendor_milk_assign.milk_in_ltrs, vendor_milk_assign.price, vendor_milk_assign.milk_in_ltrs*vendor_milk_assign.price AS TotalLtrPrice From vendor_milk_assign LEFT JOIN  vendors on vendor_milk_assign.vendor_id = vendors.id  WHERE vendor_milk_assign.vendor_id ='$uid'"; 
+$from_change_format =  date("Y-m-d", strtotime($_GET['start_date']));
+$to_change_format =  date("Y-m-d", strtotime($_GET['end_date']));
+if($from_change_format!='1970-01-01' && $to_change_format!='1970-01-01') {
+    $getSelData = "SELECT vendors.id,vendors.vendor_name,vendor_vegitables_assign.item_name,vendor_vegitables_assign.category_id,categories.category_name,vendor_vegitables_assign.item_weight,vendor_vegitables_assign.price, sum(vendor_vegitables_assign.price) AS totalPrice FROM vendor_vegitables_assign LEFT JOIN vendors ON  vendor_vegitables_assign.vendor_id=vendors.id LEFT JOIN categories ON  vendor_vegitables_assign.category_id=categories.id  WHERE DATE_FORMAT(vendor_vegitables_assign.created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY vendor_vegitables_assign.vendor_id";
+} else {
+  $getSelData = "SELECT vendors.id,vendors.vendor_name,vendor_vegitables_assign.item_name,vendor_vegitables_assign.category_id,categories.category_name,vendor_vegitables_assign.item_weight,vendor_vegitables_assign.price, sum(vendor_vegitables_assign.price) AS totalPrice FROM vendor_vegitables_assign LEFT JOIN vendors ON  vendor_vegitables_assign.vendor_id=vendors.id LEFT JOIN categories ON  vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.vendor_id";
+
+     /*$getSelData = "SELECT vendors.id,vendors.vendor_name, sum(vendor_milk_assign.milk_in_ltrs) AS totalMilk, vendor_milk_assign.price FROM vendor_milk_assign LEFT JOIN vendors ON vendor_milk_assign.vendor_id=vendors.id GROUP BY vendor_milk_assign.vendor_id";*/
+}        
+
 if($conn->query($getSelData)){
     $resultset = $conn->query($getSelData);
 }else{
     die('There was an error running the query [' . $conn->error . ']');
 }
 
-$getVendorName = getIndividualDetails($uid,'vendors','id'); 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -50,7 +57,7 @@ $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 048', PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -103,45 +110,47 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Milk Vendors Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
+  <th colspan="6" align="center" style="font-weight:bold;">Other Vendors Monthly Report </th>
  </tr>
  <tr style="background-color: #4CAF50; color: white; font-weight:bold">
   <th align="center">S.NO</th>  
-  <th align="center">Date</th>
-  <th align="center">Milk In Ltrs</th>
+  <th align="center">Vendor Name</th>
+  <th align="center">Item Name</th>
+  <th align="center">Category Name</th>
+  <th align="center">Item Weight</th>
   <th align="center">Price</th>
-  <th align="center">Total</th>
+
  </tr>';
  $i=1;
- $totalLtrs=0;
- $grandTotal=0;
- $x=0;
-while ($milkOrderData= $resultset->fetch_array()){
-    /*$x++; 
-    $class = ($x%2 == 0)? '#dfebff': '#FFFFFF';*/
-    $totalLtrs += $milkOrderData['milk_in_ltrs'];
-    $grandTotal += $milkOrderData['TotalLtrPrice'];
+ $totalPrice1=0;
+ //$grandTotal=0;
+while ($row= $resultset->fetch_array()){
+    $getVendorName = getIndividualDetails($row['id'],'vendors','id');  
+    $totalPrice1 += $row['totalPrice'];
+    //$grandTotal += $row['totalPrice']*$row['price'];
     //echo "<pre>"; print_r($milkOrderData); die;
-$tbl .='<tr style="border-bottom:0;; margin: 0px;">
+$tbl .='<tr style="border-bottom:0">
   <td>'.$i.'</td>  
-  <td>'.$milkOrderData['created_date'].'</td>
-  <td>'.$milkOrderData['milk_in_ltrs'].'</td>
-  <td>'.$milkOrderData['price'].'</td>
-  <td>'.$milkOrderData['TotalLtrPrice'].'</td>
- </tr>'; 
+  <td>'.$getVendorName['vendor_name'].'</td>
+  <td>'.$row['item_name'].'</td>
+  <td>'.$row['category_name'].'</td>
+  <td>'.$row['item_weight'].'</td>
+  <td>'.$row['totalPrice'].'</td>
+   </tr>'; 
 
 $i++; }
 $tbl .='</table>';
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total</th>
+  <th colspan="6" align="center" style="background-color: #4CAF50; color: white; font-weight:bold">Grand Total</th>
  </tr>
  <tr>
   <td></td>  
   <td></td>
-  <td>'.$totalLtrs.'</td>
+  <td></td>
+  <td></td>
   <td></td> 
-  <td>'.$grandTotal.'</td>
+  <td>'.$totalPrice1.'</td>
  </tr></table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
