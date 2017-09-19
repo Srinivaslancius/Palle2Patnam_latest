@@ -7,48 +7,43 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
 
   //Date format changes
   $table = "vendor_vegitables_assign";
-  $user_id = $_POST['vendor_id'];
-  $category_id = $_POST['category_id'];
-  $item_weight = $_POST['item_weight'];
-  $item_name = $_POST['item_name'];
-  $price = $_POST['price'];
-  $created_date = $_POST['created_date'];
-  /*$start_date = $_POST['start_date'];
-  $end_date = $_POST['end_date'];*/
+  //$user_id = $_POST['vendor_id'];
+  $start_date = $_POST['start_date'];
+  $end_date = $_POST['end_date'];
   //echo "<pre>"; print_r($_REQUEST); die;
   //Set From and To dates depends on databse search results
-  $from_change_format =  date("Y-m-d", strtotime($created_date));                        
-  $to_change_format   =  date("Y-m-d", strtotime($created_date));
+  $from_change_format =  date("Y-m-d", strtotime($start_date));                        
+  $to_change_format   =  date("Y-m-d", strtotime($end_date));
 
-  if(isset($user_id) && $user_id!='' && isset($created_date) && $created_date!='') {
+  if(isset($user_id) && $user_id!='' && isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
-    //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT * FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='') {
+    //echo "SELECT * FROM {$statement} ";
+    $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
+  } elseif(isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT * FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='' && isset($user_id) && $user_id!='' ) {
+    $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
+  } elseif(isset($start_date) && $start_date!='' && isset($user_id) && $user_id!='' ) {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *, FROM {$statement} ");
+    $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");
   } elseif(isset($user_id) && $user_id!='') {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' GROUP BY `vendor_id` ";
-    $getData = $conn->query("SELECT  * FROM {$statement} ");
-  } elseif(isset($created_date) && $created_date!='' ) {
+    $getData = $conn->query("SELECT  *,SUM(price) AS total_price FROM {$statement} ");
+  } elseif(isset($start_date) && $start_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT * FROM {$statement} ");   
-  } elseif(isset($created_date) && $created_date!='' ) {
+    $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");   
+  } elseif(isset($end_date) && $end_date!='' ) {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT * FROM {$statement} ");   
+    $getData = $conn->query("SELECT *,SUM(price) AS total_price FROM {$statement} ");   
   }else {
-    $sql="SELECT  *  from `vendor_vegitables_assign` GROUP BY vendor_id ";
+    $sql="SELECT  *,SUM(price)  AS total_price from `vendor_vegitables_assign` GROUP BY vendor_id ";
     $getData = $conn->query($sql);
   }
 }else{
-    $sql="SELECT  * from `vendor_vegitables_assign` GROUP BY vendor_id ";
+    $sql="SELECT  *,SUM(price) AS total_price from `vendor_vegitables_assign` GROUP BY vendor_id ";
     $getData = $conn->query($sql);
 }
 
@@ -118,7 +113,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT categories.id,categories.category_name FROM categories LEFT JOIN vendor_vegitables_assign ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id";
+  <?php $sql = "SELECT categories.id,categories.category_name FROM categories LEFT JOIN vendor_vegitables_assign ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id,vendor_vegitables_assign.vendor_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
@@ -168,32 +163,44 @@ h3{
   <tr>
     <th>Id</th>
     <th>Vendor Name</th>
-    <th>Category Name</th>
+    <!-- <th>Category Name</th>
     <th>Item Name</th>
     <th>Item Weight</th>
     <th>Price</th>
+     --><th>Total Price</th>
     <th>Print</th>
   </tr>
   <?php   
         $i=1; 
         $vendor_id = array();
-        $category_id = array();  
+        //$category_id = array();  
         //$total_ltrs = 0;
-        while ($row = $getData->fetch_assoc()) {           
+        while ($row = $getData->fetch_assoc()) {
         $vendor_id[] = serialize($row['vendor_id']);       
-        $category_id[] = serialize($row['category_id']);
+        //$category_id[] = serialize($row['category_id']);
   ?>
   <tr>
     <td><?php echo $i; ?></td>
     <td><?php $getVendorName = getIndividualDetails($row['vendor_id'],'vendors','id'); echo $getVendorName['vendor_name']; ?></td>
-    <td><?php $getCategoryName = getIndividualDetails($row['category_id'],'categories','id'); echo $getCategoryName['category_name']; ?></td>
-    <td><center><?php echo $row['item_name']; ?><center></td>
+    <!-- <td><?php $getCategoryName = getIndividualDetails($row['category_id'],'categories','id'); echo $getCategoryName['category_name']; ?></td> -->
+    <!-- <td><center><?php echo $row['item_name']; ?><center></td>
     <td><?php echo $row['item_weight'];?></td> 
-    <td><?php echo $row['price']; ?></td>
+    <td><?php echo $row['price']; ?></td> -->
+    <td><?php echo $row['total_price']; ?></td>
     <td> <a href="TCPDF/examples/view_other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
   </tr>
   <?php $i++;  } ?>
-</table></center>
+</table>
+  <?php 
+    if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='' && isset($_REQUEST['end_date']) && $_REQUEST['end_date']!='') {
+      $start_date = $_REQUEST['start_date'];
+      $end_date = $_REQUEST['end_date'];
+    } else {
+      $start_date = '';
+      $end_date = '';
+    }
+  ?>
+</center>
 </form>
 </div>
 <div class="container-fluid footer">
@@ -205,4 +212,22 @@ h3{
   $( function() {
     $( "#end_date , #start_date" ).datepicker();
   } );
+
+  
+  $(document).ready(function() {
+  //End date should be greater than Start date
+    $("#end_date").change(function () {
+        var startDate = document.getElementById("start_date").value;
+        if ($('#start_date').val()=='') {
+        alert("Please Enter Start date");
+        document.getElementById("end_date").value = "";
+    };
+        var endDate = document.getElementById("end_date").value;
+     
+        if ((Date.parse(endDate) <= Date.parse(startDate))) {
+            alert("End date should be greater than Start date");
+            document.getElementById("end_date").value = "";
+        }
+    });
+  });
 </script>

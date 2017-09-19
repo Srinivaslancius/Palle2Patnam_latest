@@ -99,8 +99,6 @@
                 <span class="menu-text">Milk Orders</span>
               </a>
               <ul class="sidebar-submenu collapse">
-                <li class="menu-subtitle">Milk Reports</li>
-                <li class="menu-subtitle">Milk Orders</li>
                 <li class="<?php if($page_name == 'milk_orders.php' || $page_name == 'add_milk_order.php') { echo "active"; } ?>"><a href="milk_orders.php">Milk Orders</a></li> 
                 <li class="<?php if($page_name == 'extra_milk_orders.php' || $page_name == 'add_extra_milk_order.php') { echo "active"; } ?>"><a href="extra_milk_orders.php">Extra Milk Orders</a></li>
                 <li class="<?php if($page_name == 'cancel_milk_orders.php' || $page_name == 'add_cancel_milk_order.php') { echo "active"; } ?>"><a href="cancel_milk_orders.php">Cancel Milk Orders</a></li>
@@ -115,8 +113,9 @@
               </a>
               <ul class="sidebar-submenu collapse">
                 <li class="menu-subtitle">Milk Vendor Reports</li>
-                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Milk Vendor Reports</a></li> 
-                
+                <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Milk Vendor Reports</a></li>
+                <li class="<?php if($page_name == 'other_vendor_reports.php') { echo "active"; } ?>"><a href="other_vendor_reports.php" target="_blank">Other Vendor Reports</a></li>
+                <li class="<?php if($page_name == 'user_milk_reports.php') { echo "active"; } ?>"><a href="user_milk_reports.php" target="_blank">User Milk Reports</a></li> 
               </ul>
             </li>
             <!-- <li class="with-sub">

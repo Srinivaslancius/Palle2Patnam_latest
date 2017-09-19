@@ -111,7 +111,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT users.id,users.user_name FROM users LEFT JOIN milk_orders ON milk_orders.user_id=users.id GROUP BY milk_orders.user_id";
+  <?php $sql = "SELECT users.id,users.user_name FROM milk_orders LEFT JOIN users ON milk_orders.user_id=users.id GROUP BY milk_orders.user_id";
       $result = $conn->query($sql);
   ?>
 <div class="container-fluid header">
@@ -196,4 +196,22 @@ h3{
   $( function() {
     $( "#end_date , #start_date" ).datepicker();
   } );
+
+  
+  $(document).ready(function() {
+  //End date should be greater than Start date
+    $("#end_date").change(function () {
+        var startDate = document.getElementById("start_date").value;
+        if ($('#start_date').val()=='') {
+        alert("Please Enter Start date");
+        document.getElementById("end_date").value = "";
+    };
+        var endDate = document.getElementById("end_date").value;
+     
+        if ((Date.parse(endDate) <= Date.parse(startDate))) {
+            alert("End date should be greater than Start date");
+            document.getElementById("end_date").value = "";
+        }
+    });
+  });
 </script>
