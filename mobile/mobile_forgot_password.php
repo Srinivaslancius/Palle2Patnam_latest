@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
       if($result->num_rows > 0) {
           	$row = $result->fetch_assoc();
-          	$response["password"] = decryptPassword($row['user_password']); 
+          	$response["password"] = 'Your password is : '.decryptPassword($row['user_password']); 
             $response['success']=0;
             $response['message']='Success';        
 
