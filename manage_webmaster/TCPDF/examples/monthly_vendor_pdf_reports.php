@@ -137,7 +137,7 @@ $i++; }
 $tbl .='</table>';
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="background-color: #4CAF50; color: white; font-weight:bold">Grand Total</th>
+  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total</th>
  </tr>
  <tr>
   <td></td>  
