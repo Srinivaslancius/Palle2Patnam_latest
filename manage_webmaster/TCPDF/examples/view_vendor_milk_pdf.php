@@ -103,7 +103,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Milk Vendor Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
+  <th colspan="5" align="center" style="font-weight:bold;">Milk Vendors Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
  </tr>
  <tr style="background-color: #4CAF50; color: white; font-weight:bold">
   <th align="center">S.NO</th>  
@@ -131,7 +131,7 @@ $i++; }
 $tbl .='</table>';
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Grand Total</th>
+  <th colspan="5" align="center" style="background-color: #4CAF50; color: white; font-weight:bold">Grand Total</th>
  </tr>
  <tr>
   <td></td>  

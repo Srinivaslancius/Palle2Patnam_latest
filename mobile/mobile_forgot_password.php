@@ -1,28 +1,37 @@
-<?php 
-include "../manage_webmaster/admin_includes/config.php";
-include "../manage_webmaster/admin_includes/common_functions.php";
+<?php
+include "../admin/includes/config.php";
+include "../admin/includes/functions.php";
+
+$response = array(); 
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-	//Save Ratings in database
-	if (isset($_REQUEST['user_id']) && !empty($_REQUEST['user_id']) ) {
 
-		$user_id = $_REQUEST["user_id"];	    
-	    //Get user password
-	    $row = getIndividualDetails($_REQUEST['user_id'],'users','id');
-	    $response["password"] = decryptPassword($row['user_password']); 
-		$response["success"] = 0;            
-	    $response["message"] = "Success";  
+  if(!empty($_REQUEST['mobile']) && !empty($_REQUEST['mobile']) )  {
 
-	} else {
-		//If post params empty return below error
-		$response["success"] = 3;
-	    $response["message"] = "Required field(s) is missing";	    
-	}
-	
+    $mobile = $_REQUEST['mobile'];    
+
+    $sql = "SELECT * FROM users WHERE user_mobile = '$mobile'";
+    $result = $conn->query($sql);   
+
+      if($result->num_rows > 0) {
+          	$row = $result->fetch_assoc();
+          	$response["password"] = decryptPassword($row['user_password']); 
+            $response['success']=0;
+            $response['message']='Success';        
+
+        } else {
+          $response['success']=1;
+          $response['message']='Your Mobile Number Not Valid ,Pelase Enter Valid Number.';          
+        }
+
+    } else {
+      $response['success']=2;
+      $response['message']='Parameters missing';     
+    }
+    
 } else {
-	$response["success"] = 4;
-	$response["message"] = "Invalid request";
+    $response['success']=3;
+    $response['message']='Invalid request';   
 }
-echo json_encode($response);
-
+  echo json_encode($response);
 ?>
