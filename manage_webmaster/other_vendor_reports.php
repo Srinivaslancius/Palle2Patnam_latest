@@ -23,32 +23,34 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   if(isset($user_id) && $user_id!='' && isset($created_date) && $created_date!='') {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT item_name FROM {$statement} ");
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($created_date) && $created_date!='') {
     $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT item_weight FROM {$statement} ");
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($created_date) && $created_date!='' && isset($user_id) && $user_id!='' ) {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT price, FROM {$statement} ");
+    $getData = $conn->query("SELECT *, FROM {$statement} ");
   } elseif(isset($user_id) && $user_id!='') {
     $statement = "`$table` WHERE `vendor_id` = '$user_id' GROUP BY `vendor_id` ";
-    $getData = $conn->query("SELECT * FROM {$statement} ");
+    $getData = $conn->query("SELECT  * FROM {$statement} ");
+  } elseif(isset($created_date) && $created_date!='' ) {
+    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
+    //echo "SELECT * FROM {$statement} "; 
+    $getData = $conn->query("SELECT * FROM {$statement} ");   
+  } elseif(isset($created_date) && $created_date!='' ) {
+    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
+    //echo "SELECT * FROM {$statement} "; 
+    $getData = $conn->query("SELECT * FROM {$statement} ");   
   }else {
-    $sql="SELECT  item_name,item_weight,price  from `vendor_vegitables_assign` GROUP BY vendor_id ";
+    $sql="SELECT  *  from `vendor_vegitables_assign` GROUP BY vendor_id ";
     $getData = $conn->query($sql);
   }
 }else{
-    $sql="SELECT  item_name,item_weight,price from `vendor_vegitables_assign` GROUP BY vendor_id ";
+    $sql="SELECT  * from `vendor_vegitables_assign` GROUP BY vendor_id ";
     $getData = $conn->query($sql);
 }
-
-  /*echo $sql = "SELECT vendor_vegitables_assign.id,vendor_vegitables_assign.vendor_id,vendors.vendor_name,vendor_vegitables_assign.item_name,vendor_vegitables_assign.item_weight, vendor_vegitables_assign.price, vendor_vegitables_assign.item_weight*vendor_vegitables_assign.price AS Total From vendor_vegitables_assign LEFT JOIN  vendors on vendor_vegitables_assign.vendor_id = vendors.id AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format'";die;  
-}
-  else {
-    echo $sql = "SELECT vendor_vegitables_assign.id,vendor_vegitables_assign.vendor_id,vendors.vendor_name,vendor_vegitables_assign.item_name,vendor_vegitables_assign.item_weight, vendor_vegitables_assign.price, vendor_vegitables_assign.item_weight*vendor_vegitables_assign.price AS Total From vendor_vegitables_assign LEFT JOIN  vendors on vendor_vegitables_assign.vendor_id = vendors.id"; die;
-  }*/
 
 ?>
   
@@ -116,7 +118,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT categories.id,categories.category_name,vendors.vendor_name FROM vendor_vegitables_assign LEFT JOIN categories ON vendor_vegitables_assign.category_id=categories.id LEFT JOIN vendors ON vendor_vegitables_assign.vendor_id=vendors.id GROUP BY vendor_vegitables_assign.category_id";
+  <?php $sql = "SELECT categories.id,categories.category_name FROM vendor_vegitables_assign  LEFT JOIN categories ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
@@ -143,7 +145,7 @@ h3{
       <option <?php if(isset($_REQUEST['vendor_id']) && $_REQUEST['category_id']==$getAllCategories['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllCategories['id']; ?>"><?php echo $getAllCategories['category_name']; ?></option>
           <?php } ?>
     </select>     
-  </div> -->      
+  </div> -->    
   <div class="col-sm-3">
     <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date"  value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
   </div>
@@ -174,18 +176,18 @@ h3{
   </tr>
   <?php   
         $i=1; 
-        $user_id = array(); 
+        $vendor_id = array();  
         //$total_ltrs = 0;
         while ($row = $getData->fetch_assoc()) {           
-        $user_id[] = serialize($row['vendor_id']);        
+        $vendor_id[] = serialize($row['vendor_id']);       
 
   ?>
   <tr>
     <td><?php echo $i; ?></td>
     <td><?php $getVendorName = getIndividualDetails($row['vendor_id'],'vendors','id'); echo $getVendorName['vendor_name']; ?></td>
-    <td>Apple</td>
+    <td><?php $getCategoryname= $result->fetch_assoc(); echo $getCategoryname['category_name']; ?></td>
     <td><?php echo $row['item_name']; ?></td>
-    <td><?php echo $row['item_weight']; ?><td> 
+    <td><?php echo $row['item_weight'];?><td> 
     <td><?php echo $row['price']; ?></td>
     <td> <a href="TCPDF/examples/other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
   </tr>
