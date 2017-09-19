@@ -1,11 +1,11 @@
 <?php
 //============================================================+
-// File name   : example_011.php
-// Begin       : 2008-03-04
+// File name   : example_048.php
+// Begin       : 2009-03-20
 // Last Update : 2013-05-14
 //
-// Description : Example 011 for TCPDF class
-//               Colored Table (very simple table)
+// Description : Example 048 for TCPDF class
+//               HTML tables and table headers
 //
 // Author: Nicola Asuni
 //
@@ -19,91 +19,28 @@
 /**
  * Creates an example PDF TEST document using TCPDF
  * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Colored Table
+ * @abstract TCPDF - Example: HTML tables and table headers
  * @author Nicola Asuni
- * @since 2008-03-04
+ * @since 2009-03-20
  */
 
-
-$price = 0;
-
+// Include the main TCPDF library (search for installation path).
 // Include the main TCPDF library (search for installation path).
 include_once('../../admin_includes/config.php');
+include_once('../../admin_includes/common_functions.php');
 require_once('tcpdf_include.php');
 $uid = $_GET['uid'];
 
-// extend TCPF with custom functions
-class MYPDF extends TCPDF {
-
-    // Load table data from file
-    public function LoadData() {
-        // Read file lines
-        global $conn;
-        global $uid;
-       
-        
-        $getSelData = "SELECT vendor_milk_assign.id,vendors.vendor_name,vendor_milk_assign.created_date,vendor_milk_assign.milk_in_ltrs, vendor_milk_assign.price, vendor_milk_assign.milk_in_ltrs*vendor_milk_assign.price AS TotalLtrPrice From vendor_milk_assign LEFT JOIN  vendors on vendor_milk_assign.vendor_id = vendors.id  WHERE vendor_milk_assign.vendor_id ='$uid'";        
-
-        if($conn->query($getSelData)){
-        $resultset = $conn->query($getSelData);
-        }else{
-        die('There was an error running the query [' . $conn->error . ']');
-        }
-        //$resultset = mysqli_query($conn, $getSelData) or die("database error:". mysqli_error($conn));
-        //$lines = file($resultset);
-        //echo "<pre>"; print_r($resultset); die;
-        $data = array();
-        while ($milkOrderData= $resultset->fetch_array()){
-            //echo "<pre>"; print_r($milkOrderData);    
-            //$values = implode(';', $milkOrderData);
-            //array_push($data, $values);
-            $data[] = $milkOrderData;
-        }
-        /*foreach($lines as $line) {
-            $data[] = explode(';', chop($line));
-        }*/
-        return $data;
-    }
-
-    // Colored table
-    public function ColoredTable($header,$data) {
-        // Colors, line width and bold font
-        $this->SetFillColor(53, 184, 99);
-        $this->SetTextColor(255);
-        $this->SetDrawColor(173, 169, 162);
-        $this->SetLineWidth(0.3);
-        $this->SetFont('', 'B');
-        // Header
-        $w = array(30,30,30, 30, 30, 30);
-        $num_headers = count($header);
-        for($i = 0; $i < $num_headers; ++$i) {
-            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
-        }
-        $this->Ln();
-        // Color and font restoration
-        $this->SetFillColor(224, 235, 255);
-        $this->SetTextColor(0);
-        $this->SetFont('');
-        // Data
-        $fill = 0;
-        $i=1;
-        foreach($data as $row) {
-            $this->Cell($w[0], 6, $i, 'LR', 0, 'L', $fill);
-            $this->Cell($w[1], 6, $row[1], 'LR', 0, 'L', $fill);
-            $this->Cell($w[2], 6, $row[2], 'LR', 0, 'L', $fill);
-            $this->Cell($w[3], 6, $row[3], 'LR', 0, 'L', $fill);
-            $this->Cell($w[4], 6, $row[4], 'LR', 0, 'L', $fill);
-            $this->Cell($w[5], 6, $row[5], 'LR', 0, 'L', $fill);
-            $this->Ln();
-            $fill=!$fill;
-            $i++;
-        }
-        $this->Cell(array_sum($w), 0, '', 'T');
-    }
+$getSelData = "SELECT vendor_milk_assign.id,vendors.vendor_name,vendor_milk_assign.created_date,vendor_milk_assign.milk_in_ltrs, vendor_milk_assign.price, vendor_milk_assign.milk_in_ltrs*vendor_milk_assign.price AS TotalLtrPrice From vendor_milk_assign LEFT JOIN  vendors on vendor_milk_assign.vendor_id = vendors.id  WHERE vendor_milk_assign.vendor_id ='$uid'"; 
+if($conn->query($getSelData)){
+    $resultset = $conn->query($getSelData);
+}else{
+    die('There was an error running the query [' . $conn->error . ']');
 }
 
+$getVendorName = getIndividualDetails($uid,'vendors','id'); 
 // create new PDF document
-$pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
@@ -113,7 +50,7 @@ $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 011', PDF_HEADER_STRING);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 048', PDF_HEADER_STRING);
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -142,24 +79,74 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 // ---------------------------------------------------------
 
 // set font
-$pdf->SetFont('helvetica', '', 8);
+$pdf->SetFont('helvetica', 'B', 20);
 
 // add a page
 $pdf->AddPage();
 
-// column titles
-$header = array('S.NO','Vendor Name','Date', 'Milk In Ltrs', 'Price', 'Total');
+$pdf->SetFont('helvetica', '', 8);
 
-// data loading
-$data = $pdf->LoadData();
+// NON-BREAKING TABLE (nobr="true")
 
-// print colored table
-$pdf->ColoredTable($header, $data);
+$tbl ='<style type="text/css">
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2} 
 
-// ---------------------------------------------------------
+</style>';
 
-// close and output PDF document
-$pdf->Output('example_011.pdf', 'I');
+$tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
+ <tr>
+  <th colspan="5" align="center" style="font-weight:bold;">Vendor Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
+ </tr>
+ <tr style="background-color: #4CAF50; color: white; font-weight:bold">
+  <th align="center">S.NO</th>  
+  <th align="center">Date</th>
+  <th align="center">Milk In Ltrs</th>
+  <th align="center">Price</th>
+  <th align="center">Total</th>
+ </tr>';
+ $i=1;
+ $totalLtrs=0;
+ $grandTotal=0;
+while ($milkOrderData= $resultset->fetch_array()){
+    $totalLtrs += $milkOrderData['milk_in_ltrs'];
+    $grandTotal += $milkOrderData['TotalLtrPrice'];
+    //echo "<pre>"; print_r($milkOrderData); die;
+$tbl .='<tr style="border-bottom:0">
+  <td>'.$i.'</td>  
+  <td>'.$milkOrderData['created_date'].'</td>
+  <td>'.$milkOrderData['milk_in_ltrs'].'</td>
+  <td>'.$milkOrderData['price'].'</td>
+  <td>'.$milkOrderData['TotalLtrPrice'].'</td>
+ </tr>'; 
+
+$i++; }
+$tbl .='</table>';
+$tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
+ <tr>
+  <th colspan="5" align="center" style="font-weight:bold;">Grand Total</th>
+ </tr>
+ <tr>
+  <td></td>  
+  <td></td>
+  <td>'.$totalLtrs.'</td>
+  <td></td> 
+  <td>'.$grandTotal.'</td>
+ </tr></table>';
+
+$pdf->writeHTML($tbl, true, false, false, false, '');
+
+// -----------------------------------------------------------------------------
+
+//Close and output PDF document
+$pdf->Output('example_048.pdf', 'I');
 
 //============================================================+
 // END OF FILE
