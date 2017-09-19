@@ -115,11 +115,14 @@ $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-co
  $i=1;
  $totalLtrs=0;
  $grandTotal=0;
+ $x=0;
 while ($milkOrderData= $resultset->fetch_array()){
+    $x++; 
+    $class = ($x%2 == 0)? '#87CEFA': '#FFFFFF';
     $totalLtrs += $milkOrderData['milk_in_ltrs'];
     $grandTotal += $milkOrderData['TotalLtrPrice'];
     //echo "<pre>"; print_r($milkOrderData); die;
-$tbl .='<tr style="border-bottom:0">
+$tbl .='<tr style="border-bottom:0;background-color:'.$class.'; margin: 0px;">
   <td>'.$i.'</td>  
   <td>'.$milkOrderData['created_date'].'</td>
   <td>'.$milkOrderData['milk_in_ltrs'].'</td>
