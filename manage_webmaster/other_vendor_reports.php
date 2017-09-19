@@ -7,7 +7,7 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
 
   //Date format changes
   $table = "vendor_vegitables_assign";
-  $user_id = $_POST['vendor_id'];
+  //$user_id = $_POST['vendor_id'];
   $start_date = $_POST['start_date'];
   $end_date = $_POST['end_date'];
   //echo "<pre>"; print_r($_REQUEST); die;
@@ -173,11 +173,11 @@ h3{
   <?php   
         $i=1; 
         $vendor_id = array();
-        $category_id = array();  
+        //$category_id = array();  
         //$total_ltrs = 0;
-        while ($row = $getData->fetch_assoc()) {           
+        while ($row = $getData->fetch_assoc()) {
         $vendor_id[] = serialize($row['vendor_id']);       
-        $category_id[] = serialize($row['category_id']);
+        //$category_id[] = serialize($row['category_id']);
   ?>
   <tr>
     <td><?php echo $i; ?></td>
