@@ -118,7 +118,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT categories.id,categories.category_name FROM vendor_vegitables_assign  LEFT JOIN categories ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id";
+  <?php $sql = "SELECT categories.id,categories.category_name FROM categories LEFT JOIN vendor_vegitables_assign ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
@@ -176,27 +176,28 @@ h3{
   </tr>
   <?php   
         $i=1; 
-        $vendor_id = array();  
+        $vendor_id = array();
+        $category_id = array();  
         //$total_ltrs = 0;
         while ($row = $getData->fetch_assoc()) {           
         $vendor_id[] = serialize($row['vendor_id']);       
-
+        $category_id[] = serialize($row['category_id']);
   ?>
   <tr>
     <td><?php echo $i; ?></td>
     <td><?php $getVendorName = getIndividualDetails($row['vendor_id'],'vendors','id'); echo $getVendorName['vendor_name']; ?></td>
-    <td><?php $getCategoryname= $result->fetch_assoc(); echo $getCategoryname['category_name']; ?></td>
-    <td><?php echo $row['item_name']; ?></td>
-    <td><?php echo $row['item_weight'];?><td> 
+    <td><?php $getCategoryName = getIndividualDetails($row['category_id'],'categories','id'); echo $getCategoryName['category_name']; ?></td>
+    <td><center><?php echo $row['item_name']; ?><center></td>
+    <td><?php echo $row['item_weight'];?></td> 
     <td><?php echo $row['price']; ?></td>
-    <td> <a href="TCPDF/examples/other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
+    <td> <a href="TCPDF/examples/view_other_vendor_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
   </tr>
   <?php $i++;  } ?>
 </table></center>
 </form>
 </div>
 <div class="container-fluid footer">
-    <center><a href="TCPDF/examples/other_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
+    <center><a href="TCPDF/examples/monthly_other_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
 </div>
 </body>
 </html>
