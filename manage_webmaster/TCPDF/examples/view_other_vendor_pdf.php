@@ -31,7 +31,9 @@ include_once('../../admin_includes/common_functions.php');
 require_once('tcpdf_include.php');
 $uid = $_GET['uid'];
 
-$getSelData = "SELECT vendor_milk_assign.id,vendors.vendor_name,vendor_milk_assign.created_date,vendor_milk_assign.milk_in_ltrs, vendor_milk_assign.price, vendor_milk_assign.milk_in_ltrs*vendor_milk_assign.price AS TotalLtrPrice From vendor_milk_assign LEFT JOIN  vendors on vendor_milk_assign.vendor_id = vendors.id  WHERE vendor_milk_assign.vendor_id ='$uid'"; 
+/*$getSelData = "SELECT vendor_milk_assign.id,vendors.vendor_name,vendor_milk_assign.created_date,vendor_milk_assign.milk_in_ltrs, vendor_milk_assign.price, vendor_milk_assign.milk_in_ltrs*vendor_milk_assign.price AS TotalLtrPrice From vendor_milk_assign LEFT JOIN  vendors on vendor_milk_assign.vendor_id = vendors.id  WHERE vendor_milk_assign.vendor_id ='$uid'";*/
+
+  $getSelData = "SELECT vendor_vegitables_assign.id,vendor_vegitables_assign.created_date,vendors.id,vendors.vendor_name,categories.id,categories.category_name, vendor_vegitables_assign.item_name, vendor_vegitables_assign.item_weight,vendor_vegitables_assign.price FROM vendor_vegitables_assign LEFT JOIN categories ON vendor_vegitables_assign.category_id=categories.id LEFT JOIN vendors ON vendor_vegitables_assign.vendor_id=vendors.id WHERE vendor_vegitables_assign.vendor_id ='$uid'";
 if($conn->query($getSelData)){
     $resultset = $conn->query($getSelData);
 }else{
@@ -95,7 +97,7 @@ table {
 }
 th, td {
     text-align: left;
-    padding: 4px;
+    padding: 8px;
 }
 tr:nth-child(even){background-color: #f2f2f2} 
 
@@ -103,38 +105,37 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Milk Vendors Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
+  <th colspan="6" align="center" style="font-weight:bold;">Vendor Monthly Report <br /> '.$getVendorName['vendor_name'].'</th>
  </tr>
  <tr style="background-color: #4CAF50; color: white; font-weight:bold">
   <th align="center">S.NO</th>  
   <th align="center">Date</th>
-  <th align="center">Milk In Ltrs</th>
+  <th align="center">Item Name</th>
+  <th align="center">Category Name</th>
+  <th align="center">Item Weight</th>
   <th align="center">Price</th>
-  <th align="center">Total</th>
  </tr>';
  $i=1;
- $totalLtrs=0;
- $grandTotal=0;
- $x=0;
-while ($milkOrderData= $resultset->fetch_array()){
-    $x++; 
-    $class = ($x%2 == 0)? '#87CEFA': '#FFFFFF';
-    $totalLtrs += $milkOrderData['milk_in_ltrs'];
-    $grandTotal += $milkOrderData['TotalLtrPrice'];
+ //$totalLtrs=0;
+ //$grandTotal=0;
+while ($getData= $resultset->fetch_array()){
+    //$totalLtrs += $milkOrderData['milk_in_ltrs'];
+    //$grandTotal += $milkOrderData['TotalLtrPrice'];
     //echo "<pre>"; print_r($milkOrderData); die;
-$tbl .='<tr style="border-bottom:0;background-color:'.$class.'; margin: 0px;">
+$tbl .='<tr style="border-bottom:0">
   <td>'.$i.'</td>  
-  <td>'.$milkOrderData['created_date'].'</td>
-  <td>'.$milkOrderData['milk_in_ltrs'].'</td>
-  <td>'.$milkOrderData['price'].'</td>
-  <td>'.$milkOrderData['TotalLtrPrice'].'</td>
+  <td>'.$getData['created_date'].'</td>
+  <td>'.$getData['item_name'].'</td>
+  <td>'.$getData['category_name'].'</td>
+  <td>'.$getData['item_weight'].'</td>
+  <td>'.$getData['price'].'</td>
  </tr>'; 
 
 $i++; }
 $tbl .='</table>';
-$tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
+/*$tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="background-color: #4CAF50; color: white; font-weight:bold">Grand Total</th>
+  <th colspan="5" align="center" style="font-weight:bold;">Grand Total</th>
  </tr>
  <tr>
   <td></td>  
@@ -142,7 +143,7 @@ $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-col
   <td>'.$totalLtrs.'</td>
   <td></td> 
   <td>'.$grandTotal.'</td>
- </tr></table>';
+ </tr></table>';*/
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 
