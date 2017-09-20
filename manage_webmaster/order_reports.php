@@ -149,7 +149,7 @@ h3{
   </div>
   <div class="col-sm-3">
     <input class="btn btn-primary" type="submit" name="search" value="Search">
-    <input class="btn btn-primary" type="submit" name="reset" value="Reset" id="reset">
+    <input class="btn btn-primary" type="reset" name="reset" value="Reset" id="reset">
   </div>
   
 </div>
