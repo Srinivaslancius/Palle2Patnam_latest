@@ -36,7 +36,7 @@ $id = $_GET['uid'];
               <?php $getUsers = getDataFromTables('users',$status=NULL,'id',$id,$activeStatus=NULL,$activeTop=NULL);
               $getUsers1 = $getUsers->fetch_assoc(); ?>   
               <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-                <form data-toggle="validator" method="POST">
+                <form data-toggle="validator" method="POST" autocomplete="off">
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Name</label>
                     <input type="text" name="user_name" class="form-control" id="form-control-2" placeholder="User Name" data-error="Please enter user name" required value="<?php echo $getUsers1['user_name'];?>">
@@ -49,7 +49,8 @@ $id = $_GET['uid'];
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Mobile</label>
-                    <input type="text" name="user_mobile" class="form-control" id="form-control-2" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" value="<?php echo $getUsers1['user_mobile'];?>">
+                    <input type="text" name="user_mobile" class="form-control" id="user_mobile" placeholder="Mobile" data-error="Please enter mobile number." required maxlength="10" pattern="[0-9]{10}" onkeypress="return isNumberKey(event)" onkeyup="checkMobile()" value="<?php echo $getUsers1['user_mobile'];?>">
+                    <span id="mobile_status" style="color: red;"></span>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
@@ -108,12 +109,24 @@ $id = $_GET['uid'];
       </div>
   
 <?php include_once 'admin_includes/footer.php'; ?>
-<!--script for allow only numbers-->
-<script type="text/javascript">
-    function isNumberKey(evt){
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
+<!--Script for already existed mobile number checking -->
+<script>
+  function checkMobile() {
+      var mobile1 = document.getElementById("user_mobile").value;
+      if (mobile1){
+        $.ajax({
+        type: "POST",
+        url: "check_mobile_avail.php",
+        data: {
+          user_mobile:mobile1,
+        },
+        success: function (response) {
+          $( '#mobile_status' ).html(response);
+          if (response == "Mobile Number Already Exist"){
+            $("#user_mobile").val("");
+          }
+          }
+         });
+      }
     }
 </script>
