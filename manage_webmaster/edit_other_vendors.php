@@ -58,16 +58,25 @@ $id = $_GET['id'];
                     <div class="help-block with-errors"></div>
                   </div>
 
+                  <?php $getCategoryItems = getAllDataCheckActiveRecords('category_items',0);
+                  ?>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Item Name</label>
-                    <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name" data-error="Please enter item name." required value="<?php echo $getOtherVendors1['item_name'];?>">
+                    <label for="form-control-3" class="control-label">Choose Item</label>
+                    <select id="form-control-3" name="item_name" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Item</option>
+                      <?php while($row = $getCategoryItems->fetch_assoc()) {  ?>
+                        <option value="<?php echo $row['id']; ?>" <?php if($row['id'] == $getOtherVendors1['item_name']) { echo "selected=selected"; }?>><?php echo $row['item_name']; ?></option>
+                      <?php } ?>
+                   </select>
                     <div class="help-block with-errors"></div>
                   </div>
+
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Item Weight</label>
                     <input type="text" class="form-control" id="item_weight" name="item_weight" placeholder="Item Weight" data-error="Please enter item weight." required value="<?php echo $getOtherVendors1['item_weight'];?>">
                     <div class="help-block with-errors"></div>
                   </div>
+
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Price</label>
                     <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter price." required value="<?php echo $getOtherVendors1['price'];?>">

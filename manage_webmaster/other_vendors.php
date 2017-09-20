@@ -42,7 +42,7 @@
                     <td><?php echo $i;?></td>
                     <td><?php $getVendorName = getDataFromTables('vendors',$status=NULL,'id',$row['vendor_id'],$activeStatus=NULL,$activeTop=NULL); $getName = $getVendorName->fetch_assoc(); echo $getName['vendor_name']; ?></td>
                     <td><?php $getCategoryName = getDataFromTables('categories',$status=NULL,'id',$row['category_id'],$activeStatus=NULL,$activeTop=NULL); $getCategory = $getCategoryName->fetch_assoc(); echo $getCategory['category_name']; ?></td>
-                    <td><?php echo $row['item_name'];?></td>
+                    <td><?php $getCategoryItemName = getDataFromTables('category_items',$status=NULL,'id',$row['item_name'],$activeStatus=NULL,$activeTop=NULL); $getItem = $getCategoryItemName->fetch_assoc(); echo $getItem['item_name']; ?></td>
                     <td><?php echo $row['item_weight'];?></td>
                     <td><?php echo $row['price'];?></td>
                     <td><?php echo $row['created_date'];?></td>

@@ -7,7 +7,7 @@ include "../admin/includes/functions.php";
 	if (isset($_REQUEST['product_id']) && !empty($_REQUEST['product_id']) && isset($_REQUEST['user_id']) && !empty($_REQUEST['user_id']) && isset($_REQUEST['product_quantity']) && !empty($_REQUEST['product_quantity']) && isset($_REQUEST['product_price']) && !empty($_REQUEST['product_price'])) {
 		// echo "<pre>"; print_r($_POST); die;	
 		$address = $_REQUEST['address'];
-		$user_name = $_REQUEST['user_name'];
+		$user_name = $_REQUEST['name'];
 		$mobile = $_REQUEST['mobile'];
 		$user_id = $_REQUEST['user_id'];	
 		$order_total = $_REQUEST["order_total"];
@@ -20,16 +20,16 @@ include "../admin/includes/functions.php";
 		$order_id = $contstr.$random1.$random2;
 		
 		$prods = array();
-    $prods = explode(',', $_REQUEST["product_id"]);
-    
-    $qnty = array();
-    $qnty = explode(',', $_REQUEST["product_quantity"]);
-    
-    $prices = array();
-    $prices = explode(',', $_REQUEST["product_price"]);
-    
-    $prices = array();
-    $pname= explode(',', $_REQUEST["product_name"]);
+	    $prods = explode(',', $_REQUEST["product_id"]);
+	    
+	    $qnty = array();
+	    $qnty = explode(',', $_REQUEST["product_quantity"]);
+	    
+	    $prices = array();
+	    $prices = explode(',', $_REQUEST["product_price"]);
+	    
+	    $pname = array();
+	    $pname= explode(',', $_REQUEST["product_name"]);
 
 		$productsCount = count($prods);
 		for($i=0;$i<$productsCount;$i++) {
