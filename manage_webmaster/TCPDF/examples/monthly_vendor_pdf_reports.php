@@ -108,7 +108,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="font-weight:bold;">Milk Vendors Monthly Report </th>
+  <th colspan="5" align="center" style="font-weight:bold;">All Vendors Monthly Milk Reports </th>
  </tr>
  <tr style="background-color: #4CAF50; color: white; font-weight:bold">
   <th align="center">S.NO</th>  
