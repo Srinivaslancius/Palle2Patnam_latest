@@ -40,13 +40,13 @@ if (!isset($_POST['submit']))  {
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." required>
+                    <label for="form-control-2" class="control-label">Milk in Ltrs</label>
+                    <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Milk in Ltrs</label>
-                    <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." required>
+                    <label for="form-control-2" class="control-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
