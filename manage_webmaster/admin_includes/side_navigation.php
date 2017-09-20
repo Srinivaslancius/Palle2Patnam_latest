@@ -115,7 +115,8 @@
                 <li class="menu-subtitle">Milk Vendor Reports</li>
                 <li class="<?php if($page_name == 'new_vendor_milk_reports.php') { echo "active"; } ?>"><a href="new_vendor_milk_reports.php" target="_blank">Milk Vendor Reports</a></li>
                 <li class="<?php if($page_name == 'other_vendor_reports.php') { echo "active"; } ?>"><a href="other_vendor_reports.php" target="_blank">Other Vendor Reports</a></li>
-                <li class="<?php if($page_name == 'user_milk_reports.php') { echo "active"; } ?>"><a href="user_milk_reports.php" target="_blank">User Milk Reports</a></li> 
+                <li class="<?php if($page_name == 'user_milk_reports.php') { echo "active"; } ?>"><a href="user_milk_reports.php" target="_blank">User Milk Reports</a></li>
+                <li class="<?php if($page_name == 'order_reports.php') { echo "active"; } ?>"><a href="order_reports.php" target="_blank">Order Reports</a></li>
               </ul>
             </li>
             <!-- <li class="with-sub">
