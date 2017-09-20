@@ -19,7 +19,7 @@ if(!isset($_SESSION['admin_user_id'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="">
     <title><?php echo $getSiteSettingsData['admin_title'];?></title>
-    <title>Palle2Patnam</title>
+    <!-- <title>Palle2Patnam</title> -->
     <link rel="icon" type="image/png" href="<?php echo $base_url . 'uploads/logo/'.$getSiteSettingsData['logo'] ?>" sizes="32x32">    
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
     <link rel="stylesheet" href="css/vendor.min.css">
@@ -34,7 +34,7 @@ if(!isset($_SESSION['admin_user_id'])) {
           <a class="navbar-brand" href="dashboard.php">
             <img src="<?php echo $base_url . 'uploads/logo/'.$getSiteSettingsData['logo'] ?>" accept="image/*" height="20">
             <span><?php echo $getSiteSettingsData['admin_title'];?></span>
-            <span>Palle2Patnam</span>
+            <!-- <span>Palle2Patnam</span> -->
           </a>
           <button class="navbar-toggler left-sidebar-toggle pull-left visible-xs" type="button">
             <span class="hamburger"></span>
