@@ -134,7 +134,8 @@ $tbl .='</table>';
 
 $cntExtraLtrs = $resultset->num_rows;
 $cntCancelLtrs = $resultset1->num_rows;
-
+$total = 0;
+$total1 = 0;
 if($cntExtraLtrs!=0) {
     $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
      <tr>
@@ -144,7 +145,6 @@ if($cntExtraLtrs!=0) {
       <th align="center">Date</th>  
       <th align="center">Ltrs</th>      
      </tr>'; 
-    $total = 0;
     while ($milkOrderData= $resultset->fetch_array()){
         $total += $milkOrderData['extra_ltr'];
         $tbl .='<tr style="border-bottom:0;; margin: 0px;">        
@@ -164,8 +164,7 @@ if($cntCancelLtrs!=0) {
      <tr style="background-color: #4CAF50; color: white; font-weight:bold">
       <th align="center">Date</th>  
       <th align="center">Ltrs</th>      
-     </tr>'; 
-    $total1 = 0;
+     </tr>';     
     while ($milkCancelData= $resultset1->fetch_array()){
         $total1 += $milkCancelData['cancel_ltr'];
         $tbl .='<tr style="border-bottom:0;; margin: 0px;">        
