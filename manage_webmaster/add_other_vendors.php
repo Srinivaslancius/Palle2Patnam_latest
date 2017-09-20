@@ -53,9 +53,15 @@ if (!isset($_POST['submit']))  {
                    </select>
                     <div class="help-block with-errors"></div>
                   </div>
+                  <?php $getCategoryItems = getAllDataCheckActiveRecords('category_items',0);?>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Item Name</label>
-                    <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name" data-error="Please enter item name." required>
+                    <label for="form-control-3" class="control-label">Choose Item</label>
+                    <select id="form-control-3" name="item_name" class="custom-select" data-error="This field is required." required>
+                      <option value="">Select Item</option>
+                      <?php while($row = $getCategoryItems->fetch_assoc()) {  ?>
+                        <option value="<?php echo $row['id']; ?>"><?php echo $row['item_name']; ?></option>
+                      <?php } ?>
+                   </select>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">

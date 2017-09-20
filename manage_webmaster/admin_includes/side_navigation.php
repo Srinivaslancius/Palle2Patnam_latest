@@ -46,10 +46,18 @@
               </a>
               <ul class="sidebar-submenu collapse">
                 <li class="menu-subtitle">Vendors</li>
-                <li class="<?php if($page_name == 'vendors.php' || $page_name == 'add_vendors.php' || $page_name == 'edit_vendors.php') { echo "active"; } ?>"><a href="vendors.php">Vendors</a></li> 
+                <li class="<?php if($page_name == 'vendors.php' || $page_name == 'add_vendors.php' || $page_name == 'edit_vendors.php') { echo "active"; } ?>"><a href="vendors.php">Vendors</a></li>
                 <li class="<?php if($page_name == 'milk_vendors.php' || $page_name == 'add_milk_vendors.php' || $page_name == 'edit_milk_vendors.php') { echo "active"; } ?>"><a href="milk_vendors.php">Milk Vendors</a></li>
                 <li class="<?php if($page_name == 'other_vendors.php' || $page_name == 'add_other_vendors.php' || $page_name == 'edit_other_vendors.php') { echo "active"; } ?>"><a href="other_vendors.php">Other Vendors</a></li>
               </ul>
+            </li>
+            <li  class="<?php if($page_name == 'category_items.php' || $page_name == 'add_category_items.php' || $page_name == 'edit_category_items.php' ) { echo "active"; } ?>">
+              <a href="category_items.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-collection-item zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Category Items</span>
+              </a>
             </li>
             <li  class="<?php if($page_name == 'banners.php' || $page_name == 'add_banners.php' || $page_name == 'edit_banners.php' ) { echo "active"; } ?>">
               <a href="banners.php" aria-haspopup="true">
