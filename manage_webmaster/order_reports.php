@@ -135,7 +135,7 @@ h3{
   
   <div class="col-sm-3">
     <select class="form-control" id="select-users" name="user_id">
-      <option value="">Select Vendor</option>
+      <option value="">Select User</option>
       <?php while ($getAllUsers = $result->fetch_assoc()) { ?>
       <option <?php if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['user_name']; ?></option>
           <?php } ?>
