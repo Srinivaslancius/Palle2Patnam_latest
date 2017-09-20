@@ -32,13 +32,15 @@ if (!isset($_POST['submit']))  {
 
                   <?php $getUserData = getAllDataCheckActiveRecords('users','0');
                         $getProductData = getAllDataCheckActiveRecords('products','0');
+                        $sql = "SELECT users.id,users.user_name FROM milk_orders LEFT JOIN users ON milk_orders.user_id=users.id GROUP BY milk_orders.user_id";
+                        $result = $conn->query($sql);
                   ?>
                   <div class="form-group">
                     <label for="form-control-3" class="control-label">Choose User</label>
                     <select id="user_id" name="user_id" class="get_total_milk_ltrs custom-select" data-error="This field is required." required>
                       <option value="">Select User</option>
-                      <?php while($row = $getUserData->fetch_assoc()) {  ?>
-                        <option value="<?php echo $row['id']; ?>"><?php echo $row['user_name']; ?></option>
+                      <?php while($getUser = $result->fetch_assoc()) { ?> 
+                        <option value="<?php echo $getUser['id']; ?>"><?php echo $getUser['user_name']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>

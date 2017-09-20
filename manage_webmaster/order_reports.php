@@ -6,9 +6,10 @@
 if(isset($_POST['search']) && $_POST['search']!='' ) {
 
   //Date format changes
-  $table = "vendor_milk_assign";
+  $table = "orders";
+  $user_id = $_POST['user_id'];
   $user_id = $_POST['vendor_id'];
-  $start_date = $_POST['start_date'];
+  $start_date = $_POST['start_date']; 
   $end_date = $_POST['end_date'];
   //echo "<pre>"; print_r($_REQUEST); die;
   //Set From and To dates depends on databse search results
@@ -16,34 +17,34 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   $to_change_format   =  date("Y-m-d", strtotime($end_date));  
 
   if(isset($user_id) && $user_id!='' && isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
+    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' && isset($user_id) && $user_id!='' ) {
-    $statement = "`$table` WHERE `vendor_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
+    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($user_id) && $user_id!='') {
-    $statement = "`$table` WHERE `vendor_id` = '$user_id' GROUP BY `vendor_id` ";
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");
+    $statement = "`$table` WHERE `user_id` = '$user_id' GROUP BY `user_id` ";
+    $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `vendor_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");   
+    $getData = $conn->query("SELECT * FROM {$statement} ");   
   } elseif(isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `vendor_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
-    $getData = $conn->query("SELECT *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs FROM {$statement} ");   
+    $getData = $conn->query("SELECT * FROM {$statement} ");   
   } else {
-    $sql="select *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs from `vendor_milk_assign` GROUP BY vendor_id ";
+    $sql="SELECT * from `orders` GROUP BY user_id ";
     $getData = $conn->query($sql);
   }
 } else {
-    $sql="select *,SUM(milk_in_ltrs) AS total_milk_vendor_ltrs from `vendor_milk_assign` GROUP BY vendor_id ";
+    $sql="SELECT * from `orders` GROUP BY user_id ";
     $getData = $conn->query($sql);
 }
 ?>
@@ -112,7 +113,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT vendors.id,vendors.vendor_name FROM vendor_milk_assign LEFT JOIN vendors ON vendor_milk_assign.vendor_id=vendors.id GROUP BY vendor_milk_assign.vendor_id";
+  <?php $sql = "SELECT users.id,users.user_name FROM orders LEFT JOIN users ON orders.user_id=users.id GROUP BY orders.user_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
@@ -133,10 +134,10 @@ h3{
 <div class="row">
   
   <div class="col-sm-3">
-    <select class="form-control" id="select-users" name="vendor_id">
-      <option value="">Select Vendor</option>
+    <select class="form-control" id="select-users" name="user_id">
+      <option value="">Select User</option>
       <?php while ($getAllUsers = $result->fetch_assoc()) { ?>
-      <option <?php if(isset($_REQUEST['vendor_id']) && $_REQUEST['vendor_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['vendor_name']; ?></option>
+      <option <?php if(isset($_REQUEST['user_id']) && $_REQUEST['user_id']==$getAllUsers['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllUsers['id']; ?>"><?php echo $getAllUsers['user_name']; ?></option>
           <?php } ?>
     </select>     
   </div>      
@@ -161,23 +162,25 @@ h3{
 <center><table>
   <tr>
     <th>Id</th>
-    <th>Vendor Name</th>
-    <th>Total Ltrs</th>
+    <th>Name</th>
+    <th>Order Id</th>
+    <th>Total Price</th>
     <th>Print</th>
   </tr>
   <?php   
         $i=1; 
-        $vendor_id = array(); 
-        $total_ltrs = 0;
+        $user_id = array(); 
+        //$total_ltrs = 0;
         while ($row = $getData->fetch_assoc()) {           
-        $vendor_id[] = serialize($row['vendor_id']);        
+        $user_id[] = serialize($row['user_id']);        
 
   ?>
   <tr>
     <td><?php echo $i; ?></td>
-    <td><?php $getVendorName = getIndividualDetails($row['vendor_id'],'vendors','id'); echo $getVendorName['vendor_name']; ?></td>    
-    <td><?php echo $row['total_milk_vendor_ltrs']; ?></td>    
-    <td> <a href="TCPDF/examples/view_vendor_milk_pdf.php?uid=<?php echo $row['vendor_id']; ?>" target="_blank">Print</a></td>
+    <td><?php $getUserName = getIndividualDetails($row['user_id'],'users','id'); echo $getUserName['user_name']; ?></td> 
+    <td><?php echo $row['order_id']; ?></td>   
+    <td><?php echo $row['product_total_price']; ?></td>    
+    <td> <a href="TCPDF/examples/view_order_pdf.php?uid=<?php echo $row['user_id']; ?>" target="_blank">Print</a></td>
   </tr>
   <?php $i++;  } ?>
 </table>
@@ -194,7 +197,7 @@ h3{
 </form>
 </div>
 <div class="container-fluid footer">
-    <center><a href="TCPDF/examples/monthly_vendor_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
+    <center><a href="TCPDF/examples/monthly_order_pdf_reports.php?start_date=<?php echo $start_date; ?>&end_date=<?php echo $end_date; ?>" target="_blank" class="btn btn-default btn-lg" style="background-color:#35b863; color:white">Generate Reports</a></center>
 </div>
 </body>
 </html>
