@@ -7,7 +7,7 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
 
   //Date format changes
   $table = "vendor_vegitables_assign";
-  //$user_id = $_POST['vendor_id'];
+  $user_id = $_POST['vendor_id'];
   $start_date = $_POST['start_date'];
   $end_date = $_POST['end_date'];
   //echo "<pre>"; print_r($_REQUEST); die;
@@ -113,7 +113,7 @@ h3{
 </style>
 </head>
 <body>
-  <?php $sql = "SELECT categories.id,categories.category_name FROM categories LEFT JOIN vendor_vegitables_assign ON vendor_vegitables_assign.category_id=categories.id GROUP BY vendor_vegitables_assign.category_id,vendor_vegitables_assign.vendor_id";
+<?php $sql = "SELECT vendors.id,vendors.vendor_name FROM vendor_vegitables_assign LEFT JOIN vendors ON vendor_vegitables_assign.vendor_id=vendors.id GROUP BY vendor_vegitables_assign.vendor_id";
       $result = $conn->query($sql);
 ?>
 <div class="container-fluid header">
@@ -133,14 +133,14 @@ h3{
 <form name="search" method="post" autocomplete="off">
 <div class="row">
   
-  <!-- <div class="col-sm-3">
+  <div class="col-sm-3">
     <select class="form-control" id="select-users" name="vendor_id">
-      <option value="">Select Category</option>
-      <?php while ($getAllCategories = $result->fetch_assoc()) { ?>
-      <option <?php if(isset($_REQUEST['vendor_id']) && $_REQUEST['category_id']==$getAllCategories['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllCategories['id']; ?>"><?php echo $getAllCategories['category_name']; ?></option>
+      <option value="">Select Vendor</option>
+      <?php while ($getAllVendors = $result->fetch_assoc()) { ?>
+      <option <?php if(isset($_REQUEST['vendor_id']) && $_REQUEST['vendor_id']==$getAllVendors['id']) { echo "selected='selected'"; } ?> value="<?php echo $getAllVendors['id']; ?>"><?php echo $getAllVendors['vendor_name']; ?></option>
           <?php } ?>
     </select>     
-  </div> -->    
+  </div>    
   <div class="col-sm-3">
     <input type="text" class="form-control" name="start_date" placeholder="Start Date" id="start_date"  value="<?php if(isset($_REQUEST['start_date']) && $_REQUEST['start_date']!='') { echo $_REQUEST['start_date'];  } ?>">
   </div>
