@@ -185,9 +185,9 @@ $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-col
  <tr>
   <td></td>  
   <td></td>
-  <td>'.$grnadTotal.'</td>
+  <td>Total Ltrs : '.$grnadTotal.'</td>
   <td></td> 
-  <td>'.$grnadTotalPrice.'</td>
+  <td>Total Price : '.$grnadTotalPrice.'</td>
  </tr></table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');

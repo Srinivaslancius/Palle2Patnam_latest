@@ -44,13 +44,13 @@ $id = $_GET['id'];
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." value="<?php echo $getMilkVendors1['price'];?>"  required >
+                    <label for="form-control-2" class="control-label">Milk in Ltrs</label>
+                    <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." value="<?php echo $getMilkVendors1['milk_in_ltrs'];?>"  required onkeypress="return isNumberKey(event)">
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
-                    <label for="form-control-2" class="control-label">Milk in Ltrs</label>
-                    <input type="text" class="form-control" id="milk_in_ltrs" name="milk_in_ltrs" placeholder="Milk in ltrs" data-error="Please enter Milk in Ltrs." value="<?php echo $getMilkVendors1['milk_in_ltrs'];?>"  required onkeypress="return isNumberKey(event)">
+                    <label for="form-control-2" class="control-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" placeholder="Price" data-error="Please enter Price." value="<?php echo $getMilkVendors1['price'];?>"  required >
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="form-group">
