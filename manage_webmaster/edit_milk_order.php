@@ -98,6 +98,22 @@ $id = $_GET['id'];
       </div>
       <?php include_once 'admin_includes/footer.php'; ?>
     <script type="text/javascript">
+      $(document).ready(function() {
+      //End date should be greater than Start date
+        $("#end_date").change(function () {
+            var startDate = document.getElementById("start_date").value;
+            if ($('#start_date').val()=='') {
+            alert("Please Enter Start date");
+            document.getElementById("end_date").value = "";
+        };
+            var endDate = document.getElementById("end_date").value;
+         
+            if ((Date.parse(endDate) <= Date.parse(startDate))) {
+                alert("End date should be greater than Start date");
+                document.getElementById("end_date").value = "";
+            }
+        });
+      });
         $('#price_ltr').on('keyup', function(){
             if($('#total_ltr').val()!='') {
                 var total = 0.00;
