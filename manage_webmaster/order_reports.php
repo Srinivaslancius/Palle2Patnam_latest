@@ -16,26 +16,26 @@ if(isset($_POST['search']) && $_POST['search']!='' ) {
   $to_change_format   =  date("Y-m-d", strtotime($end_date));  
 
   if(isset($user_id) && $user_id!='' && isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
+    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(order_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' && isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(order_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' && isset($user_id) && $user_id!='' ) {
-    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
+    $statement = "`$table` WHERE `user_id` = '$user_id' AND DATE_FORMAT(order_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($user_id) && $user_id!='') {
     $statement = "`$table` WHERE `user_id` = '$user_id' GROUP BY `user_id` ";
     $getData = $conn->query("SELECT * FROM {$statement} ");
   } elseif(isset($start_date) && $start_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(order_date,'%Y-%m-%d') = '$from_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT * FROM {$statement} ");   
   } elseif(isset($end_date) && $end_date!='' ) {
-    $statement = "`$table` WHERE DATE_FORMAT(created_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
+    $statement = "`$table` WHERE DATE_FORMAT(order_date,'%Y-%m-%d') between '$from_change_format' AND '$to_change_format' GROUP BY `user_id` ";
     //echo "SELECT * FROM {$statement} "; 
     $getData = $conn->query("SELECT * FROM {$statement} ");   
   } else {
