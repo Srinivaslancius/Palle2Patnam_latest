@@ -114,7 +114,7 @@ tr:nth-child(even){background-color: #f2f2f2}
 
 $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="3" align="center" style="font-weight:bold;">User Monthly Milk Report - Order Invoice<br /> '.$getUserData['first_name'].' <br /><span style="text-align:left; font-weight:normal">Bill To : <br />'.$getUserData['address1'].' <br/> '.$getUserData['district'].'<br /> '.$getUserData['pin_code'].' <br/> '.$getUserData['order_id'].'</span><p style="text-align:right; font-weight:normal">Date :  '.$getUserData['order_date'].'</p></th>
+  <th colspan="3" align="center" style="font-weight:bold;">User Monthly Order Report - Order Invoice<br /> '.$getUserData['first_name'].' <br /><span style="text-align:left; font-weight:normal">Bill To : <br />'.$getUserData['address1'].' <br/> '.$getUserData['district'].'<br /> '.$getUserData['pin_code'].' <br/> '.$getUserData['order_id'].'</span><p style="text-align:right; font-weight:normal">Date :  '.$getUserData['order_date'].'</p></th>
  </tr>
  <tr style="background-color: #4CAF50; color: white; font-weight:bold">
   <th align="center">Name</th>  
