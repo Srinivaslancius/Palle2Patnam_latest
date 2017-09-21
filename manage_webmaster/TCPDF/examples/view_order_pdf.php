@@ -84,6 +84,7 @@ $pdf->SetFont('helvetica', '', 8);
 
 $tbl ='<style type="text/css">
 table {
+
     border-collapse: collapse;
     width: 100%;
 }
@@ -114,30 +115,26 @@ if($conn->query($sql)){
     die('There was an error running the query [' . $conn->error . ']');
 }
   $grnadTotal = 0;
+  $x = 0;
   while($row = $resultset->fetch_assoc()){
-
+    $class = ($x % 2 == 0) ? '' : '';
     $grnadTotal += $row['product_total_price'];
-$tbl .='<tr style="border-bottom:0;; margin: 0px;"> 
+$tbl .='<tr style="border-bottom:0; background-color:; margin: 0px;"> 
   
   
-  <td>'.$row['product_name'].'</td>
-  <td>'.$row['product_quantity'].'</td>
-  <td>'.$row['product_price'].'</td>
-  <td>'.$row['product_total_price'].'</td>
+  <td align="center">'.$row['product_name'].'</td>
+  <td align="center">'.$row['product_quantity'].'</td>
+  <td align="center">'.$row['product_price'].'</td>
+  <td align="center">'.$row['product_total_price'].'</td>
     
  </tr>'; 
  }
 $tbl .='</table>';
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="4" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total</th>
+  <td colspan="4" align="right" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total : '.$grnadTotal.'</td>
  </tr>
- <tr>
-  <td></td>  
-  <td></td>
-  <td></td> 
-  <td>'.$grnadTotal.'</td>
- </tr></table>';
+ </table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
 
