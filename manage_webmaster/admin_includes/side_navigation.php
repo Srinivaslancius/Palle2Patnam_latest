@@ -157,6 +157,14 @@
               </a>
             </li> -->
             </li>
+            <li  class="<?php if($page_name == 'mobile_push_notifications.php') { echo "active"; } ?>">
+              <a href="mobile_push_notifications.php" aria-haspopup="true">
+                <span class="menu-icon">
+                   <i class="zmdi zmdi-account-box-mail zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Mobile Push Notifications</span>
+              </a>
+            </li>
             <li  class="<?php if($page_name == 'coverage_areas.php' || $page_name == 'add_coverage_areas.php' || $page_name == 'edit_coverage_areas.php') { echo "active"; } ?>">
               <a href="coverage_areas.php" aria-haspopup="true">
                 <span class="menu-icon">
