@@ -115,11 +115,9 @@ if($conn->query($sql)){
     die('There was an error running the query [' . $conn->error . ']');
 }
   $grnadTotal = 0;
-  $x = 0;
   while($row = $resultset->fetch_assoc()){
-    $class = ($x % 2 == 0) ? '' : '';
     $grnadTotal += $row['product_total_price'];
-$tbl .='<tr style="border-bottom:0; background-color:; margin: 0px;"> 
+$tbl .='<tr style="border-bottom:0; margin: 0px;"> 
   
   
   <td align="center">'.$row['product_name'].'</td>
