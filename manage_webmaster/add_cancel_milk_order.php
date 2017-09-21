@@ -49,7 +49,7 @@ if (!isset($_POST['submit']))  {
                     <select id="user_id" name="user_id" class="get_total_milk_ltrs custom-select" data-error="This field is required." required>
                       <option value="">Select User</option>
                       <?php while($getUser = $result->fetch_assoc()) { ?>
-                        <option value="<?php echo $row['id']; ?>"><?php echo $getUser['user_name']; ?></option>
+                        <option value="<?php echo $getUser['id']; ?>"><?php echo $getUser['user_name']; ?></option>
                       <?php } ?>
                    </select>
                     <div class="help-block with-errors"></div>
@@ -89,26 +89,25 @@ if (!isset($_POST['submit']))  {
     </div>
     <?php include_once 'admin_includes/footer.php'; ?>
     <script type="text/javascript">
-      $('.get_total_milk_ltrs').change(function() {
-          var selectUserId = $(this).val();
-          if(selectUserId != '') {
-              $.ajax({
-                  type: 'POST',
-                  url: 'get_total_milkltr.php',
-                  dataType: 'json',
-                  data: { 'user_id' : selectUserId },
-                  success : function(result){
-                      if(result!=0){
-                          $('#total_ltr').val(result);
-                      } else {
-                          alert("Please Select Valid User");
-                          $('#total_ltr').val('');
-                      }
-                  }
-              });
-          }
-      });
-      
+        $('.get_total_milk_ltrs').change(function() {
+            var selectUserId = $(this).val();
+            if(selectUserId != '') {
+                $.ajax({
+                    type: 'POST',
+                    url: 'get_total_milkltr.php',
+                    dataType: 'json',
+                    data: { 'user_id' : selectUserId },
+                    success : function(result){
+                        if(result!=0){
+                            $('#total_ltr').val(result);
+                        } else {
+                            alert("Please Select Valid User");
+                            $('#total_ltr').val('');
+                        }
+                    }
+                });
+            }
+        });
     </script>
 
     <link href="https://cdn.rawgit.com/dubrox/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.css" rel="stylesheet"/>
