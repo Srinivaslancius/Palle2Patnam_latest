@@ -146,7 +146,7 @@ h3{
       </div>
       <div class="col-sm-3">
         <input class="btn btn-primary" type="submit" name="search" value="Search">
-        <input class="btn btn-primary" type="reset" name="reset" value="Reset" id="reset">
+        <input class="btn btn-primary" type="submit" name="reset" value="Reset" id="reset">
       </div>
     </div>
     </form>
@@ -213,5 +213,10 @@ h3{
             document.getElementById("end_date").value = "";
         }
     });
+  });
+  $("#reset").click(function () {
+    document.getElementById("select-users").value = "";
+    document.getElementById("start_date").value = "";
+    document.getElementById("end_date").value = "";
   });
 </script>
