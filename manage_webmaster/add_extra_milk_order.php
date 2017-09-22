@@ -67,7 +67,7 @@ if (!isset($_POST['submit']))  {
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Order Date</label>
-                    <input type="text" class="form-control" id="order_date" name="order_date" placeholder="Order Date" data-error="Please enter Order Date." required>
+                    <input type="text" class="form-control" id="order_date1" name="order_date" placeholder="Order Date" data-error="Please enter Order Date." required>
                     <div class="help-block with-errors"></div>
                   </div>
                   <button type="submit" name="submit" value="Submit"  class="btn btn-primary btn-block">Submit</button>
@@ -99,4 +99,9 @@ if (!isset($_POST['submit']))  {
                 });
             }
         });
+    </script>
+    <script type="text/javascript">
+      $( function() {
+          $('#order_date1').datepicker({ dateFormat: 'yy-mm-dd', minDate: 0, stepMonths: 0 });
+      });
     </script>
