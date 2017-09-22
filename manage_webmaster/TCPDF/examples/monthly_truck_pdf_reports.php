@@ -120,7 +120,7 @@ $tbl .= '<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-co
  $totalPrice=0;
  $grandTotal=0;
 while ($row= $resultset->fetch_array()){
-    $getVendorName = getIndividualDetails($row['id'],'maintance_category','id');  
+    $getVendorName = getIndividualDetails($row['maintance_category_name'],'maintance_category','id');  
     $totalPrice += $row['totalPrice1'];
 $tbl .='<tr style="border-bottom:0">
   <td>'.$i.'</td>  
