@@ -180,14 +180,10 @@ $grnadTotal =  $TotalLtrs+$total-$total1;
 $grnadTotalPrice =  $grnadTotal*$priceinLtr;
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total</th>
+  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Total Ltrs : '.$grnadTotal.'</th>
  </tr>
  <tr>
-  <td></td>  
-  <td></td>
-  <td>Total Ltrs : '.$grnadTotal.'</td>
-  <td></td> 
-  <td>Total Price : '.$grnadTotalPrice.'</td>
+  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Total Price : '.$grnadTotalPrice.'</th>
  </tr></table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
