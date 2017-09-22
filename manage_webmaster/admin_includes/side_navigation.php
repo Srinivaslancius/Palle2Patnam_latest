@@ -109,6 +109,7 @@
               <ul class="sidebar-submenu collapse">
                 <li class="<?php if($page_name == 'truck_maintenance.php' || $page_name == 'add_truck_maintenance.php' || $page_name == 'edit_truck_maintenance.php') { echo "active"; } ?>"><a href="truck_maintenance.php">Maintenance Category</a></li> 
                 <li class="<?php if($page_name == 'truck_maintenance_category.php' || $page_name == 'add_truck_maintenance_category.php' || $page_name == 'edit_truck_maintenance_category.php') { echo "active"; } ?>"><a href="truck_maintenance_category.php">Add Truck Maintenance</a></li>
+                <li class="<?php if($page_name == 'truck_maintenance_reports.php') { echo "active"; } ?>"><a href="truck_maintenance_reports.php" target="_blank">Truck Reports</a></li>
               </ul>
             </li>
             <li class="with-sub">
