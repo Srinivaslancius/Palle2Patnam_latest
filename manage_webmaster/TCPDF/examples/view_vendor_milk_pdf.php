@@ -123,25 +123,19 @@ while ($milkOrderData= $resultset->fetch_array()){
     $grandTotal += $milkOrderData['TotalLtrPrice'];
     //echo "<pre>"; print_r($milkOrderData); die;
 $tbl .='<tr style="border-bottom:0;; margin: 0px;">
-  <td>'.$i.'</td>  
-  <td>'.$milkOrderData['created_date'].'</td>
-  <td>'.$milkOrderData['milk_in_ltrs'].'</td>
-  <td>'.$milkOrderData['price'].'</td>
-  <td>'.$milkOrderData['TotalLtrPrice'].'</td>
+  <td align="center">'.$i.'</td>  
+  <td align="center">'.$milkOrderData['created_date'].'</td>
+  <td align="center">'.$milkOrderData['milk_in_ltrs'].'</td>
+  <td align="center">'.$milkOrderData['price'].'</td>
+  <td align="center">'.$milkOrderData['TotalLtrPrice'].'</td>
  </tr>'; 
 
 $i++; }
 $tbl .='</table>';
 $tbl .='<table border="1" cellpadding="6" cellspacing="0" nobr="true" border-collapse: "collapse";>
  <tr>
-  <th colspan="5" align="center" style="background-color: #eaa934; color: white; font-weight:bold">Grand Total</th>
- </tr>
- <tr>
-  <td></td>  
-  <td></td>
-  <td>Total Ltrs : '.$totalLtrs.'</td>
-  <td></td> 
-  <td>Total Price : '.$grandTotal.'</td>
+  <th colspan="5" align="right" style="background-color: #eaa934; color: white; font-weight:bold">Total Ltrs : '.$totalLtrs.'</th></tr>
+  <tr><th colspan="5" align="right" style="background-color: #eaa934; color: white; font-weight:bold">Total Price : '.$grandTotal.'</th>
  </tr></table>';
 
 $pdf->writeHTML($tbl, true, false, false, false, '');
