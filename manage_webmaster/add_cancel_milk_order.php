@@ -114,6 +114,6 @@ if (!isset($_POST['submit']))  {
     <script src="https://cdn.rawgit.com/dubrox/Multiple-Dates-Picker-for-jQuery-UI/master/jquery-ui.multidatespicker.js"></script>
     <script type="text/javascript">
       $( function() {
-          $('#cancel_date1').multiDatesPicker({ dateFormat: 'yy-mm-dd', minDate: 0 });
+          $('#cancel_date1').multiDatesPicker({ dateFormat: 'yy-mm-dd', minDate: 0,stepMonths: '0' });
       });
     </script>
