@@ -3,10 +3,8 @@
             <div class="welcome_slider">
                 <div class="single_welcome_slider" style="background-image:url(img/milk_banner1_p2p.jpg)">                    
                 </div>
-                <div class="single_welcome_slider" style="background-image:url(img/vegetablebanner1.jpg)">                    
-                </div>
-                <div class="single_welcome_slider" style="background-image:url(img/vegietable_banner2.jpg)">                    
-                </div>
+                <div class="single_welcome_slider" style="background-image:url(img/veggbg.jpg)">                    
+                </div>                
                 <div class="single_welcome_slider" style="background-image:url(img/meatbanner2.jpg)">                    
                 </div>
                 <div class="single_welcome_slider" style="background-image:url(img/welcome_bg.jpg)">
