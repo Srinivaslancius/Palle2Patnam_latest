@@ -91,6 +91,21 @@
                 <span class="menu-text">Weights</span>
               </a>
             </li>
+
+            <li class="with-sub">
+              <a href="#" aria-haspopup="true">
+                <span class="menu-icon">
+                  <i class="zmdi zmdi-shopping-basket zmdi-hc-fw"></i>
+                </span>
+                <span class="menu-text">Offers</span>
+              </a>
+              <ul class="sidebar-submenu collapse">
+                <li class="menu-subtitle">Offers</li>
+                <li class="<?php if($page_name == 'seasonal_banners.php' || $page_name == 'add_seasonal_banners.php' || $page_name == 'edit_seasonal_banners.php' || $page_name == 'delete_seasonal_banners.php') { echo "active"; } ?>"><a href="seasonal_banners.php">Seasonal Banners</a></li>
+                <li class="<?php if($page_name == 'seasonal_offer_categories.php' || $page_name == 'add_seasonal_offer_categories.php' || $page_name == 'edit_seasonal_offer_categories.php') { echo "active"; } ?>"><a href="seasonal_offer_categories.php">Offer Categories</a></li>
+              </ul>
+            </li>
+
             <li  class="<?php if($page_name == 'products.php' || $page_name == 'add_products.php' || $page_name == 'edit_products.php') { echo "active"; } ?>">
               <a href="products.php" aria-haspopup="true">
                 <span class="menu-icon">
