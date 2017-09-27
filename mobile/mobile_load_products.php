@@ -7,7 +7,7 @@ $response = array();
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
-	if(isset($_REQUEST['category_id']) && !empty($_REQUEST['category_id'])) {
+	if(isset($_REQUEST['category_id']) && !empty($_REQUEST['category_id']) && !empty($_REQUEST['user_id']) && !empty($_REQUEST['price']) && !empty($_REQUEST['product_id'])) {
 
 		$result = getAllDataWhere("products", "category_id", $_REQUEST['category_id']);	
 		if ($result->num_rows > 0) {
