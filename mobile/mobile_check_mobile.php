@@ -8,9 +8,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 if(!empty($_REQUEST['password']) && !empty($_REQUEST['password']))  {
 
-      if(!empty($_REQUEST['mobile']) && !empty($_REQUEST['mobile']) && !empty($_REQUEST['password']) && !empty($_REQUEST['password']))  {
+      if(!empty($_REQUEST['mobile']) && !empty($_REQUEST['password']) && !empty($_REQUEST['token']))  {
 
         $mobile = $_REQUEST['mobile'];
+        $token = $_REQUEST['token'];
         $password = encryptPassword($_REQUEST['password']);
 
         $sql = "SELECT * FROM users WHERE user_mobile = '$mobile'";
@@ -18,7 +19,7 @@ if(!empty($_REQUEST['password']) && !empty($_REQUEST['password']))  {
 
           if($result->num_rows > 0) {
               $row = $result->fetch_assoc();
-              $result = "UPDATE `users` SET `user_password`='$password' WHERE `user_mobile`='$mobile'";
+              $result = "UPDATE `users` SET `user_password`='$password',`token`='$token' WHERE `user_mobile`='$mobile'";
               if ($conn->query($result) === TRUE) {
                 $response['success']=0;
                 $response['message']='Success';        

@@ -2,7 +2,7 @@
       <div class="site-content">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="m-y-0">Users</h3>
+            <h3 class="m-y-0">Mobile Push notifications</h3>
           </div>
           <div class="panel-body">
             <div class="row">
@@ -15,7 +15,7 @@
                   </div>
                   <div class="form-group">
                     <label for="form-control-2" class="control-label">Message</label>
-                    <input type="text" name="messgae" class="form-control" id="form-control-2" placeholder="Message" data-error="Please enter a message." required>
+                    <input type="text" name="message" class="form-control" id="form-control-2" placeholder="Message" data-error="Please enter a message." required>
                     <div class="help-block with-errors"></div>
                   </div>                  
                   <div class="form-group">

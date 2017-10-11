@@ -67,7 +67,7 @@
     }
 
     /* Common function for get count for rows */
-     function getRowsCount($table)  {
+    function getRowsCount($table)  {
         global $conn;
         $sql="select * from `$table` ";
         $result = $conn->query($sql);
@@ -75,8 +75,16 @@
         return $noRows;
     }
 
+    function getRowsCountWithClause($table,$clause,$param)  {
+        global $conn;
+        $sql="select * from `$table` WHERE `$clause` = '$param'";
+        $result = $conn->query($sql);
+        $noRows = $result->num_rows;
+        return $noRows;
+    }
+
     /* encrypt and decrypt password */
-     function encryptPassword($pwd) {
+    function encryptPassword($pwd) {
         $key = "123";
         $admin_pwd = bin2hex(openssl_encrypt($pwd,'AES-128-CBC', $key));
         return $admin_pwd;

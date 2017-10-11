@@ -31,9 +31,12 @@ include "../admin/includes/functions.php";
 	    $pname = array();
 	    $pname= explode(',', $_REQUEST["product_name"]);
 
+	    $pweight = array();
+	    $pweight= explode(',', $_REQUEST["product_weight"]);
+
 		$productsCount = count($prods);
 		for($i=0;$i<$productsCount;$i++) {
-			$sql = "INSERT INTO orders (`first_name`, `mobile`, `address1`,`product_id`,`product_name`,`product_price`,`order_total`,`order_date`,`product_quantity`,`payment_status`,`order_status`,`order_id`,`user_id`) VALUES ('$user_name','$mobile','$address','" . $prods[$i] . "','" . $pname[$i] . "','" . $prices[$i] . "','$order_total','$order_date','" . $qnty[$i] . "','1','1','$order_id',$user_id)";
+			$sql = "INSERT INTO orders (`first_name`, `mobile`, `address1`,`product_id`,`product_name`,`product_price`,`order_total`,`order_date`,`product_quantity`,`payment_status`,`order_status`,`order_id`,`user_id`,`product_weight`) VALUES ('$user_name','$mobile','$address','" . $prods[$i] . "','" . $pname[$i] . "','" . $prices[$i] . "','$order_total','$order_date','" . $qnty[$i] . "','1','1','$order_id',$user_id,'" . $pweight[$i] . "')";
 		    if ($conn->query($sql) === TRUE) {
 	            // check the conditions for query success or not
 	            $response["success"] = 0;            
